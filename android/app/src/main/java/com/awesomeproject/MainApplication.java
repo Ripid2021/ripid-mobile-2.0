@@ -1,4 +1,4 @@
-package com.nkvi.rngithubcicd;
+package com.ripid.staging;
 
 import android.app.Application;
 import com.facebook.react.PackageList;

@@ -1,4 +1,4 @@
-package com.nkvi.rngithubcicd;
+package com.ripid.staging;
 
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;
