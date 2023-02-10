@@ -74,5 +74,5 @@ jobs:
         with:
           appId: ${{secrets.STAGING_ANDROID_FIREBASE_APP_ID}}
           token: ${{secrets.STAGING_ANDROID_FIREBASE_TOKEN}}
-          groups: testers
+          groups: ripid-team
           file: ${{steps.sign_app.outputs.signedReleaseFile}}
