@@ -1,2 +1,4 @@
 keytool -genkeypair -v -storetype PKCS12 -keystore release.keystore -alias release -keyalg RSA -keysize 2048 -validity 10000
 pass=123456
+
+openssl base64 < release.keystore  | tr -d '\n' | tee release.keystore.base64.txt
