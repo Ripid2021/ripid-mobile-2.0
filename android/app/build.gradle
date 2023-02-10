@@ -93,9 +93,9 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    namespace "com.nkvi.rngithubcicd"
+    namespace "com.ripid.staging"
     defaultConfig {
-        applicationId "com.nkvi.rngithubcicd"
+        applicationId "com.ripid.staging"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 7
