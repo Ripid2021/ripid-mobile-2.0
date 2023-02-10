@@ -1,11 +1,11 @@
-name: Android Build ## name of the workflow
+name: Build Android Staging ## name of the workflow
 
 on:
   workflow_dispatch: # To trigger manual build
   release:
     types: [published] # only run the workflow when a new release has been published
   push:
-    branches: ["build"]
+    branches: ["staging"]
 
 jobs:
   android-build:
@@ -69,10 +69,10 @@ jobs:
           keyPassword: ${{ secrets.ANDROID_KEY_PASSWORD }}
 
       ## Distribute app to Firebase App Distribution for testing / use google play internal track if you have a google play account
-      - name: upload artifact to Firebase App Distribution
+      - name: Upload Artifact to Firebase App Distribution
         uses: wzieba/Firebase-Distribution-Github-Action@v1
         with:
-          appId: ${{secrets.ANDROID_FIREBASE_APP_ID}}
+          appId: ${{secrets.STAGING_ANDROID_FIREBASE_APP_ID}}
           token: ${{secrets.ANDROID_FIREBASE_TOKEN}}
           groups: testers
           file: ${{steps.sign_app.outputs.signedReleaseFile}}
