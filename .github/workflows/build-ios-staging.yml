@@ -5,7 +5,7 @@ on:
   release:
     types: [published] # only run the workflow when a new release has been published
   push:
-    branches: ["build"]
+    branches: ["staging"]
 
 jobs:
   ios-build:
