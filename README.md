@@ -5,4 +5,5 @@ ___pass=123456___
 # Convert keystore file to base64
 openssl base64 < release.keystore  | tr -d '\n' | tee release.keystore.base64.txt
 
-#
+# Convert mobileprovision file to base64 (Pass 123456)
+openssl base64 < Ripid_Staging_Profile.mobileprovision | tr -d '\n' | tee profile.base64.txt
