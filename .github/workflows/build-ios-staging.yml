@@ -1,4 +1,4 @@
-name: IOS Production Build
+name: IOS Staging Build
 
 on:
   workflow_dispatch:
@@ -9,7 +9,7 @@ on:
 
 jobs:
   ios-build:
-    name: IOS Production Build
+    name: IOS Staging Build
     runs-on: macos-10.15
     defaults:
       run:
@@ -71,6 +71,6 @@ jobs:
         uses: apple-actions/upload-testflight-build@v1
         with:
           app-path: 'output.ipa'
-          issuer-id: ${{ secrets.APPSTORE_ISSUER_ID }}
-          api-key-id: ${{ secrets.APPSTORE_API_KEY_ID }}
-          api-private-key: ${{ secrets.APPSTORE_API_PRIVATE_KEY }}
+          issuer-id: ${{ secrets.APPSTORE_STAGING_ISSUER_ID }}
+          api-key-id: ${{ secrets.APPSTORE_STAGING_API_KEY_ID }}
+          api-private-key: ${{ secrets.APPSTORE_STAGING_API_PRIVATE_KEY }}
