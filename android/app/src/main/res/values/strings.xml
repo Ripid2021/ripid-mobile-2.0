@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">Ripid (Staging)</string>
+    <string name="facebook_app_id">1475724296207117</string>
+    <string name="facebook_client_token">9e41fe78d52c27f0fadfc407255165c2</string>
+    <string name="fb_login_protocol_scheme">fb1475724296207117</string>
 </resources>
