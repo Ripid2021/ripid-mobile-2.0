@@ -97,18 +97,21 @@ android {
             applicationId 'com.ripid.staging'
             targetSdkVersion rootProject.ext.targetSdkVersion
             resValue "string", "build_config_package", "com.ripid.staging"
+            resValue "string", "app_name", "Ripid (Dev)"
         }
         staging {
             minSdkVersion rootProject.ext.minSdkVersion
             applicationId 'com.ripid.staging'
             targetSdkVersion rootProject.ext.targetSdkVersion
             resValue "string", "build_config_package", "com.ripid.staging"
+            resValue "string", "app_name", "Ripid (Staging)"
         }
         prod {
             minSdkVersion rootProject.ext.minSdkVersion
             applicationId 'com.ripid'
             targetSdkVersion rootProject.ext.targetSdkVersion
             resValue "string", "build_config_package", "com.ripid"
+            resValue "string", "app_name", "Ripid"
         }
     }
     compileSdkVersion rootProject.ext.compileSdkVersion
