@@ -10,7 +10,7 @@ on:
 jobs:
   ios-build:
     name: IOS Staging Build
-    runs-on: macos-10.15
+    runs-on: "macos-latest"
     defaults:
       run:
         working-directory: ios
