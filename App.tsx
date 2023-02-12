@@ -8,6 +8,7 @@ import * as Sentry from '@sentry/react-native';
 
 import React, {useEffect} from 'react';
 import type {PropsWithChildren} from 'react';
+import SplashScreen from 'react-native-splash-screen';
 import {
   SafeAreaView,
   ScrollView,
@@ -70,7 +71,8 @@ function App(): JSX.Element {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
   useEffect(() => {
-    throw new Error('My first Sentry error!');
+    SplashScreen.hide();
+    // throw new Error('My first Sentry error!');
   }, []);
 
   return (
