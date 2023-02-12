@@ -121,7 +121,7 @@ android {
         applicationId "com.ripid.staging"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 10
+        versionCode 13
         versionName "0.0.4"
     }
 
