@@ -1,7 +1,9 @@
 # OSX
 #
+.env*
 .DS_Store
-
+appstore_connect_private_key.p8
+fastlane-*
 # Xcode
 #
 build/
