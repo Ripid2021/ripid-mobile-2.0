@@ -1,0 +1,64 @@
+version: 2.1
+
+orbs:
+  ruby: circleci/ruby@1.2.0
+
+jobs:
+  node:
+    working_directory: ~/demo-react-native
+    docker:
+      - image: cimg/node:16.17
+
+    steps:
+      - checkout
+      - restore_cache:
+          key: yarn-v1-{{ checksum "yarn.lock" }}-{{ arch }}
+
+      - restore_cache:
+          key: node-v1-{{ checksum "package.json" }}-{{ arch }}
+
+      - run: yarn install
+
+      - save_cache:
+          key: yarn-v1-{{ checksum "yarn.lock" }}-{{ arch }}
+          paths:
+            - ~/.cache/yarn
+
+      - save_cache:
+          key: node-v1-{{ checksum "package.json" }}-{{ arch }}
+          paths:
+            - node_modules
+
+      - persist_to_workspace:
+          root: ~/demo-react-native
+          paths:
+            - node_modules
+
+  android-build-and-test:
+    working_directory: ~/demo-react-native/android
+    docker:
+      - image: circleci/android:api-29-node
+    steps:
+      - checkout:
+          path: ~/demo-react-native
+
+      - ruby/install-deps
+      - attach_workspace:
+          at: ~/demo-react-native
+
+      - run:
+          name: fastlane android_staging
+          command: |
+            bundle exec fastlane android_staging
+
+workflows:
+  build-android-staging:
+    jobs:
+      - node:
+          filters:
+            branches:
+              only:
+                - staging
+      - android-build-and-test:
+          requires:
+            - node
