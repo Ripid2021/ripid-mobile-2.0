@@ -54,13 +54,13 @@ jobs:
             bundle exec fastlane android_staging
 
 workflows:
-  build-android-staging:
+  android-staging:
     jobs:
       - node:
           filters:
             branches:
               only:
                 - staging
-      - android-build-and-test:
+      - build-and-deploy-android:
           requires:
             - node
