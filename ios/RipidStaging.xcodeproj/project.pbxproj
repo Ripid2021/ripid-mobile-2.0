@@ -454,7 +454,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ripid.staging;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "f4e284d9-9db1-4399-b661-d5d100e1e22d";
+				PROVISIONING_PROFILE = "4101b441-ada4-40ea-a0aa-6c1394d21351";
 				PROVISIONING_PROFILE_SPECIFIER = "Ripid Staging Profile";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RipidStaging.app/RipidStaging";
 			};
@@ -483,7 +483,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ripid.staging;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "f4e284d9-9db1-4399-b661-d5d100e1e22d";
+				PROVISIONING_PROFILE = "4101b441-ada4-40ea-a0aa-6c1394d21351";
 				PROVISIONING_PROFILE_SPECIFIER = "Ripid Staging Profile";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RipidStaging.app/RipidStaging";
 			};
@@ -514,7 +514,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ripid.staging;
 				PRODUCT_NAME = RipidStaging;
-				PROVISIONING_PROFILE = "f4e284d9-9db1-4399-b661-d5d100e1e22d";
+				PROVISIONING_PROFILE = "4101b441-ada4-40ea-a0aa-6c1394d21351";
 				PROVISIONING_PROFILE_SPECIFIER = "Ripid Staging Profile";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -548,7 +548,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ripid.staging;
 				PRODUCT_NAME = RipidStaging;
-				PROVISIONING_PROFILE = "f4e284d9-9db1-4399-b661-d5d100e1e22d";
+				PROVISIONING_PROFILE = "4101b441-ada4-40ea-a0aa-6c1394d21351";
 				PROVISIONING_PROFILE_SPECIFIER = "Ripid Staging Profile";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "Ripid Staging Profile";
 				SWIFT_VERSION = 5.0;

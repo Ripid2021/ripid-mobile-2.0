@@ -1,8 +1,8 @@
 default_platform(:ios)
 
 platform :ios do
-  desc 'Export ipa'
-  lane :export_ipa do
+  desc 'IOS Staging'
+  lane :ios_staging do
     keychain_password = SecureRandom.uuid
     keychain_file_name = 'fastlane-ios-build.keychain'
 
@@ -12,7 +12,7 @@ platform :ios do
     create_keychain(
       name: keychain_file_name,
       password: keychain_password,
-      default_keychain: true,
+      default_keychain: false,
       unlock: true,
       timeout: 3600
     )
@@ -28,50 +28,50 @@ platform :ios do
 
     @profiles.each { |profile| install_provisioning_profile(path: profile) }
 
-    update_code_signing_settings(
-      use_automatic_signing: false,
-      path: ENV['PROJECT_PATH'],
-      code_sign_identity: ENV['CODE_SIGNING_IDENTITY'],
-      # targets: update_targets
-      targets: nil
-    )
+    # update_code_signing_settings(
+    #   use_automatic_signing: false,
+    #   path: ENV['PROJECT_PATH'],
+    #   code_sign_identity: ENV['CODE_SIGNING_IDENTITY'],
+    #   # targets: update_targets
+    #   targets: nil
+    # )
 
-    if @profiles.length == 1
-      update_project_provisioning(
-        xcodeproj: ENV['PROJECT_PATH'],
-        profile: @profiles[0],
-        target_filter: nil
-      )
-    end
+    # if @profiles.length == 1
+    #   update_project_provisioning(
+    #     xcodeproj: ENV['PROJECT_PATH'],
+    #     profile: @profiles[0],
+    #     target_filter: nil
+    #   )
+    # end
 
-    update_project_team(
-      path: ENV['PROJECT_PATH'], teamid: ENV['TEAM_ID'], targets: nil
-    )
+    # update_project_team(
+    #   path: ENV['PROJECT_PATH'], teamid: ENV['TEAM_ID'], targets: nil
+    # )
 
-    project =
-      Xcodeproj::Project.open(
-        if Pathname(ENV['PROJECT_PATH']).absolute?
-          ENV['PROJECT_PATH']
-        else
-          "../#{ENV['PROJECT_PATH']}"
-        end
-      )
-    project.targets.each do |target|
-      configuration =
-        target.build_configurations.find do |bc|
-          bc.name == ENV['CONFIGURATION']
-        end
-      app_identifier =
-        resolve_recursive_build_setting(
-          configuration,
-          'PRODUCT_BUNDLE_IDENTIFIER'
-        )
-      configuration.build_settings['PRODUCT_BUNDLE_IDENTIFIER'] = app_identifier
-    end
-    project.save
+    # project =
+    #   Xcodeproj::Project.open(
+    #     if Pathname(ENV['PROJECT_PATH']).absolute?
+    #       ENV['PROJECT_PATH']
+    #     else
+    #       "../#{ENV['PROJECT_PATH']}"
+    #     end
+    #   )
+    # project.targets.each do |target|
+    #   configuration =
+    #     target.build_configurations.find do |bc|
+    #       bc.name == ENV['CONFIGURATION']
+    #     end
+    #   app_identifier =
+    #     resolve_recursive_build_setting(
+    #       configuration,
+    #       'PRODUCT_BUNDLE_IDENTIFIER'
+    #     )
+    #   configuration.build_settings['PRODUCT_BUNDLE_IDENTIFIER'] = app_identifier
+    # end
+    # project.save
 
     build_app(
-      workspace: 'ios/RipidStaging.xcworkspace',
+      workspace: ENV["PROJECT_WORKSPACE"],
       # project: ENV['PROJECT_PATH'],
       configuration: ENV['CONFIGURATION'],
       scheme: ENV['SCHEME'],

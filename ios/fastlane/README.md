@@ -15,13 +15,13 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 ## iOS
 
-### ios export_ipa
+### ios ios_staging
 
 ```sh
-[bundle exec] fastlane ios export_ipa
+[bundle exec] fastlane ios ios_staging
 ```
 
-Export ipa
+IOS Staging
 
 ----
 
