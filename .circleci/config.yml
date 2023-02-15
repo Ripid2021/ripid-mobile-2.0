@@ -33,7 +33,7 @@ jobs:
           root: ~/demo-react-native
           paths:
             - node_modules
-            
+
   android-build-and-test:
     working_directory: ~/demo-react-native/android
     docker:
@@ -54,7 +54,11 @@ jobs:
 workflows:
   build-android-staging:
     jobs:
-      - node
+      - node:
+          filters:
+            branches:
+              only:
+                - staging
       - android-build-and-test:
           requires:
             - node
