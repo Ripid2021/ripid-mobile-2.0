@@ -42,7 +42,7 @@ platform :android do
     firebase_app_distribution(
       app: ENV["FIREBASE_APP_ID"],
       groups: ENV["GROUPS"],
-      release_notes: ENV["GIT_COMMIT_DESC"],
+      release_notes: ENV["COMMIT_MESSAGE"],
       firebase_cli_token: ENV["FIREBASE_CLI_TOKEN"]
     )
   end

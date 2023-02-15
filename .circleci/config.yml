@@ -11,6 +11,9 @@ jobs:
 
     steps:
       - checkout
+
+      - run: echo "export COMMIT_MESSAGE=\"$(git log --format=oneline -n 1 $CIRCLE_SHA1)\"" >> ~/.bashrc
+
       - restore_cache:
           key: yarn-v1-{{ checksum "yarn.lock" }}-{{ arch }}
 
@@ -36,8 +39,6 @@ jobs:
 
   build-and-deploy-android:
     working_directory: ~/demo-react-native/android
-    environment:
-      GIT_COMMIT_DESC: git log --format=oneline -n 1 $CIRCLE_SHA1
     docker:
       - image: circleci/android:api-29-node
     steps:
