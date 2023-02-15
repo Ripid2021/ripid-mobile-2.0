@@ -30,6 +30,8 @@ platform :android do
   desc "Android Staging"
   lane :android_staging do
 
+    increment_version
+
     gradle(task: "clean assembleStagingRelease")
   
     gradle(
@@ -37,7 +39,6 @@ platform :android do
       build_type: 'Release'
     )
 
-    increment_version
 
     firebase_app_distribution(
       app: ENV["FIREBASE_APP_ID"],
