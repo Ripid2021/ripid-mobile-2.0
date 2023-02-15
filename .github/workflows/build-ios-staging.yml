@@ -1,16 +1,16 @@
-name: IOS Production Build
+name: IOS Staging Build
 
 on:
   workflow_dispatch:
   release:
     types: [published] # only run the workflow when a new release has been published
   push:
-    branches: ["build"]
+    branches: ["staging"]
 
 jobs:
   ios-build:
-    name: IOS Production Build
-    runs-on: macos-10.15
+    name: IOS Staging Build
+    runs-on: "macos-latest"
     defaults:
       run:
         working-directory: ios
@@ -58,19 +58,19 @@ jobs:
       - name: Build IOS App
         uses: yukiarrr/ios-build-action@v1.4.0
         with:
-          project-path: ios/MyApp.xcodeproj
-          p12-base64: ${{ secrets.IOS_P12_BASE64 }}
-          mobileprovision-base64: ${{ secrets.IOS_MOBILE_PROVISION_BASE64 }}
+          project-path: ios/RipidStaging.xcodeproj
+          p12-base64: ${{ secrets.IOS_STAGING_P12_BASE64 }}
+          mobileprovision-base64: ${{ secrets.IOS_MOBILE_STAGING_PROVISION_BASE64 }}
           code-signing-identity: 'iPhone Distribution'
-          team-id: ${{ secrets.IOS_TEAM_ID }}
-          certificate-password: ${{ secrets.IOS_CERTIFICATE_PASSWORD }}
-          workspace-path: ios/MyApp.xcworkspace
-          scheme: MyApp
+          team-id: ${{ secrets.IOS_STAGING_TEAM_ID }}
+          certificate-password: ${{ secrets.IOS_STAGING_CERTIFICATE_PASSWORD }}
+          workspace-path: ios/RipidStaging.xcworkspace
+          scheme: RipidStaging
 
       - name: 'Upload app to TestFlight'
         uses: apple-actions/upload-testflight-build@v1
         with:
           app-path: 'output.ipa'
-          issuer-id: ${{ secrets.APPSTORE_ISSUER_ID }}
-          api-key-id: ${{ secrets.APPSTORE_API_KEY_ID }}
-          api-private-key: ${{ secrets.APPSTORE_API_PRIVATE_KEY }}
+          issuer-id: ${{ secrets.APPSTORE_STAGING_ISSUER_ID }}
+          api-key-id: ${{ secrets.APPSTORE_STAGING_API_KEY_ID }}
+          api-private-key: ${{ secrets.APPSTORE_STAGING_API_PRIVATE_KEY }}

@@ -4,9 +4,11 @@
  *
  * @format
  */
+import * as Sentry from '@sentry/react-native';
 
-import React from 'react';
+import React, {useEffect} from 'react';
 import type {PropsWithChildren} from 'react';
+import SplashScreen from 'react-native-splash-screen';
 import {
   SafeAreaView,
   ScrollView,
@@ -24,6 +26,13 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+
+Sentry.init({
+  dsn: 'https://c6e61692f43d4678b731c307b2abf070@o4504665800704000.ingest.sentry.io/4504665801687040',
+  // Set tracesSampleRate to 1.0 to capture 100% of transactions for performance monitoring.
+  // We recommend adjusting this value in production.
+  tracesSampleRate: 1.0,
+});
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -61,6 +70,12 @@ function App(): JSX.Element {
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
+  useEffect(() => {
+    setTimeout(() => {
+      SplashScreen.hide();
+    }, 2000);
+    // throw new Error('My first Sentry error!');
+  }, []);
 
   return (
     <SafeAreaView style={backgroundStyle}>
@@ -115,4 +130,5 @@ const styles = StyleSheet.create({
   },
 });
 
-export default App;
+export default Sentry.wrap(App);
+// export default App;
