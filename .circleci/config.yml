@@ -44,7 +44,7 @@ jobs:
       - run:
           name: fastlane android staging
           command: |
-            bundle exec fastlane android_staging
+            fastlane android_staging
             mv fastlane/report.xml
       - store_test_results:
           path: test-results
