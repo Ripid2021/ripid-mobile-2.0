@@ -16,6 +16,9 @@
 default_platform(:android)
 
 platform :android do
+  before_all do
+    setup_circle_ci
+  end
   lane :increment_version do
     latest_release = firebase_app_distribution_get_latest_release(
       app: "1:61822906434:android:b5dd5e04a8152a1f02fddb",
@@ -26,7 +29,7 @@ platform :android do
 
   desc "Android Staging"
   lane :android_staging do
-    
+
     gradle(task: "clean assembleStagingRelease")
   
     gradle(

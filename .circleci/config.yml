@@ -1,4 +1,8 @@
 version: 2.1
+
+orbs:
+  ruby: circleci/ruby@1.2.0
+
 jobs:
   node:
     working_directory: ~/demo-react-native
@@ -38,22 +42,17 @@ jobs:
       - checkout:
           path: ~/demo-react-native
 
+      - ruby/install-deps
       - attach_workspace:
           at: ~/demo-react-native
 
       - run:
-          name: fastlane android staging
+          name: fastlane android_staging
           command: |
-            fastlane android_staging
-            mv fastlane/report.xml
-      - store_test_results:
-          path: test-results
-
-      - store_artifacts:
-          path: test-results
+            bundle exec fastlane android_staging
 
 workflows:
-  node-android-ios:
+  build-android-staging:
     jobs:
       - node
       - android-build-and-test:
