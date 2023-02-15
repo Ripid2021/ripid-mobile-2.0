@@ -1,0 +1,52 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:android)
+
+platform :android do
+  lane :increment_version do
+    latest_release = firebase_app_distribution_get_latest_release(
+      app: "1:61822906434:android:b5dd5e04a8152a1f02fddb",
+      firebase_cli_token: "1//0eamg-kDNxPp2CgYIARAAGA4SNwF-L9IrHU-TgKHVOWfaWEm_oAxH1v9gxshxggNcM_XcddV7YwNsQg3K2EpDLSy1CuWWV3-eROo"
+    )
+    increment_version_code({ version_code: latest_release[:buildVersion].to_i + 1 })
+  end
+
+  desc "Android Staging"
+  lane :android_staging do
+    
+    gradle(task: "clean assembleStagingRelease")
+  
+    gradle(
+      task: 'assembleStaging',
+      build_type: 'Release'
+    )
+
+    increment_version
+
+    firebase_app_distribution(
+      app: "1:61822906434:android:b5dd5e04a8152a1f02fddb",
+      groups: "ripid-team",
+      release_notes: "Lots of amazing new features to test out!",
+      firebase_cli_token: "1//0eamg-kDNxPp2CgYIARAAGA4SNwF-L9IrHU-TgKHVOWfaWEm_oAxH1v9gxshxggNcM_XcddV7YwNsQg3K2EpDLSy1CuWWV3-eROo"
+    )
+  end
+
+  # desc "Deploy a new version to the Google Play"
+  # lane :deploy do
+  #   gradle(task: "clean assembleStagingRelease")
+  #   upload_to_play_store
+  # end
+end
