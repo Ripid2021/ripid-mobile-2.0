@@ -81,12 +81,14 @@ jobs:
       - restore_cache:
           key: pods-v1-{{ checksum "ios/Podfile.lock" }}-{{ arch }}
 
-      - run: 
-          command: pod install
-          working_directory: ios
+      - run: bundle install
+
+      # - run: 
+      #     command: pod install
+      #     working_directory: ios
 
       - run: 
-          command: bundle install
+          command: bundle exec pod install
           working_directory: ios
 
       - save_cache:
