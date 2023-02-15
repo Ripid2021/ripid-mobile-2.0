@@ -12,7 +12,7 @@ jobs:
     steps:
       - checkout
 
-      - run: echo "export COMMIT_MESSAGE=\"$(git log --format=oneline -n 1 $CIRCLE_SHA1)\"" >> ~/.bashrc
+      - run: echo "export COMMIT_MESSAGE=\"$(git log --format=oneline -n 5 $CIRCLE_SHA1)\"" >> ~/.bashrc
 
       - restore_cache:
           key: yarn-v1-{{ checksum "yarn.lock" }}-{{ arch }}
