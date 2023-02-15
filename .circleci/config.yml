@@ -34,8 +34,10 @@ jobs:
           paths:
             - node_modules
 
-  android-build-and-test:
+  build-and-deploy-android:
     working_directory: ~/demo-react-native/android
+    environment:
+      GIT_COMMIT_DESC: git log --format=oneline -n 1 $CIRCLE_SHA1
     docker:
       - image: circleci/android:api-29-node
     steps:
