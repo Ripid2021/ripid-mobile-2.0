@@ -34,6 +34,12 @@ jobs:
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile --network-timeout 300000
+      
+      - name: Setup Ruby (bundle)
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.7.6
+          bundler-cache: true
 
       - name: Restore Pods cache
         uses: actions/cache@v2
