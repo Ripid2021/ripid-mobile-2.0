@@ -35,10 +35,20 @@ jobs:
       - name: Install dependencies
         run: yarn install --frozen-lockfile --network-timeout 300000
 
-      - name: Generate env
-        run: 
-          echo $ENV_BASE64 | base64 --decode >> .env.default
-          fastlane env
-
       - name: Build and deploy
         run: fastlane ios_staging
+        env: 
+          ISSUER_ID: ${{ secrets.APPSTORE_STAGING_ISSUER_ID }}
+          KEY_ID: ${{ secrets.APPSTORE_STAGING_API_KEY_ID }}
+          APPSTORE_CONNECT_PRIVATE_KEY: ${{ secrets.APPSTORE_STAGING_API_PRIVATE_KEY }}
+
+          PROJECT_WORKSPACE: RipidStaging.xcworkspace
+          SCHEME: RipidStaging
+          CERTIFICATE_PASSWORD: ${{ secrets.IOS_STAGING_CERTIFICATE_PASSWORD }}
+          TEAM_ID: ${{ secrets.IOS_STAGING_TEAM_ID }}
+          OUTPUT_PATH: output.ipa
+          EXPORT_METHOD: app-store
+          CONFIGURATION: Release
+          CODE_SIGNING_IDENTITY: 'iPhone Distribution'
+          MOBILEPROVISION_BASE64: ${{ secrets.IOS_MOBILE_STAGING_PROVISION_BASE64 }}
+          P12_BASE64: ${{ secrets.IOS_STAGING_P12_BASE64 }}

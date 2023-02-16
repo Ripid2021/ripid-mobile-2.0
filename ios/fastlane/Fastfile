@@ -158,7 +158,7 @@ platform :ios do
   def decode_file(p12_file_name)
     File.write("../#{p12_file_name}", Base64.decode64(ENV['P12_BASE64']))
 
-    # File.write('../appstore_connect_private_key.p8', ENV['APPSTORE_CONNECT_PRIVATE_KEY'])
+    File.write('../appstore_connect_private_key.p8', ENV['APPSTORE_CONNECT_PRIVATE_KEY'])
     mobileprovision_file_name = "fastlane-ios-build.mobileprovision"
     @profiles = []
     ENV['MOBILEPROVISION_BASE64'].split(/\R/).each.with_index(
