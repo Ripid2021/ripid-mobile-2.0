@@ -3,7 +3,8 @@ default_platform(:ios)
 platform :ios do
   desc 'IOS Staging'
   lane :ios_staging do
-    keychain_password = SecureRandom.uuid
+    xcversion(version: "14.1")
+    keychain_password = '123456'
     keychain_file_name = 'fastlane-ios-build.keychain'
 
     p12_file_name = 'fastlane-ios-build.p12'
