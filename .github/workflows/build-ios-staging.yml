@@ -36,7 +36,9 @@ jobs:
         run: yarn install --frozen-lockfile --network-timeout 300000
 
       - name: Generate env
-        run: echo $ENV_BASE64 | base64 --decode >> .env.default
+        run: 
+          echo $ENV_BASE64 | base64 --decode >> .env.default
+          fastlane env
 
       - name: Build and deploy
         run: fastlane ios_staging
