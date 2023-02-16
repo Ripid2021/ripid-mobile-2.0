@@ -70,6 +70,7 @@ platform :ios do
     #   configuration.build_settings['PRODUCT_BUNDLE_IDENTIFIER'] = app_identifier
     # end
     # project.save
+    clean_build_artifacts
 
     build_app(
       workspace: ENV["PROJECT_WORKSPACE"],
