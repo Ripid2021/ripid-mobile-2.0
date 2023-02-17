@@ -30,6 +30,8 @@ platform :android do
   desc "Android Staging"
   lane :android_staging do
 
+    increment_version
+
     gradle(task: "clean assembleStagingRelease")
   
     gradle(
@@ -37,12 +39,11 @@ platform :android do
       build_type: 'Release'
     )
 
-    increment_version
 
     firebase_app_distribution(
       app: ENV["FIREBASE_APP_ID"],
       groups: ENV["GROUPS"],
-      release_notes: "Lots of amazing new features to test out!",
+      release_notes: ENV["COMMIT_MESSAGE"],
       firebase_cli_token: ENV["FIREBASE_CLI_TOKEN"]
     )
   end

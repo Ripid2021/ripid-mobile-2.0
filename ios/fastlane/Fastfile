@@ -3,7 +3,8 @@ default_platform(:ios)
 platform :ios do
   desc 'IOS Staging'
   lane :ios_staging do
-    keychain_password = SecureRandom.uuid
+    xcversion(version: "14.1")
+    keychain_password = '123456'
     keychain_file_name = 'fastlane-ios-build.keychain'
 
     p12_file_name = 'fastlane-ios-build.p12'
@@ -69,6 +70,7 @@ platform :ios do
     #   configuration.build_settings['PRODUCT_BUNDLE_IDENTIFIER'] = app_identifier
     # end
     # project.save
+    clean_build_artifacts
 
     build_app(
       workspace: ENV["PROJECT_WORKSPACE"],
@@ -158,7 +160,7 @@ platform :ios do
   def decode_file(p12_file_name)
     File.write("../#{p12_file_name}", Base64.decode64(ENV['P12_BASE64']))
 
-    # File.write('../appstore_connect_private_key.p8', ENV['APPSTORE_CONNECT_PRIVATE_KEY'])
+    File.write('../appstore_connect_private_key.p8', ENV['APPSTORE_CONNECT_PRIVATE_KEY'])
     mobileprovision_file_name = "fastlane-ios-build.mobileprovision"
     @profiles = []
     ENV['MOBILEPROVISION_BASE64'].split(/\R/).each.with_index(

@@ -34,7 +34,7 @@ jobs:
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile --network-timeout 300000
-
+      
       - name: Setup Ruby (bundle)
         uses: ruby/setup-ruby@v1
         with:
@@ -51,26 +51,23 @@ jobs:
           key: ${{ runner.os }}-pods-${{ hashFiles('ios/Podfile.lock') }}
           restore-keys: |
             ${{ runner.os }}-pods-
-
       - name: Install Pods
         run: bundle install && bundle exec pod install --repo-update && cd ..
 
-      - name: Build IOS App
-        uses: yukiarrr/ios-build-action@v1.4.0
-        with:
-          project-path: ios/RipidStaging.xcodeproj
-          p12-base64: ${{ secrets.IOS_STAGING_P12_BASE64 }}
-          mobileprovision-base64: ${{ secrets.IOS_MOBILE_STAGING_PROVISION_BASE64 }}
-          code-signing-identity: 'iPhone Distribution'
-          team-id: ${{ secrets.IOS_STAGING_TEAM_ID }}
-          certificate-password: ${{ secrets.IOS_STAGING_CERTIFICATE_PASSWORD }}
-          workspace-path: ios/RipidStaging.xcworkspace
-          scheme: RipidStaging
+      - name: Build and deploy
+        run: fastlane ios_staging
+        env: 
+          ISSUER_ID: ${{ secrets.APPSTORE_STAGING_ISSUER_ID }}
+          KEY_ID: ${{ secrets.APPSTORE_STAGING_API_KEY_ID }}
+          APPSTORE_CONNECT_PRIVATE_KEY: ${{ secrets.APPSTORE_STAGING_API_PRIVATE_KEY }}
 
-      - name: 'Upload app to TestFlight'
-        uses: apple-actions/upload-testflight-build@v1
-        with:
-          app-path: 'output.ipa'
-          issuer-id: ${{ secrets.APPSTORE_STAGING_ISSUER_ID }}
-          api-key-id: ${{ secrets.APPSTORE_STAGING_API_KEY_ID }}
-          api-private-key: ${{ secrets.APPSTORE_STAGING_API_PRIVATE_KEY }}
+          PROJECT_WORKSPACE: RipidStaging.xcworkspace
+          SCHEME: RipidStaging
+          CERTIFICATE_PASSWORD: ${{ secrets.IOS_STAGING_CERTIFICATE_PASSWORD }}
+          TEAM_ID: ${{ secrets.IOS_STAGING_TEAM_ID }}
+          OUTPUT_PATH: output.ipa
+          EXPORT_METHOD: app-store
+          CONFIGURATION: Release
+          CODE_SIGNING_IDENTITY: 'iPhone Distribution'
+          MOBILEPROVISION_BASE64: ${{ secrets.IOS_MOBILE_STAGING_PROVISION_BASE64 }}
+          P12_BASE64: ${{ secrets.IOS_STAGING_P12_BASE64 }}

@@ -11,13 +11,16 @@ jobs:
 
     steps:
       - checkout
+
+      - run: echo "export COMMIT_MESSAGE=\"$(git log --format=oneline -n 5 $CIRCLE_SHA1)\"" >> ~/.bashrc
+
       - restore_cache:
           key: yarn-v1-{{ checksum "yarn.lock" }}-{{ arch }}
 
       - restore_cache:
           key: node-v1-{{ checksum "package.json" }}-{{ arch }}
 
-      - run: yarn install
+      - run: yarn install --frozen-lockfile
 
       - save_cache:
           key: yarn-v1-{{ checksum "yarn.lock" }}-{{ arch }}
@@ -34,7 +37,7 @@ jobs:
           paths:
             - node_modules
 
-  android-build-and-test:
+  build-and-deploy-android:
     working_directory: ~/demo-react-native/android
     docker:
       - image: circleci/android:api-29-node
@@ -52,13 +55,13 @@ jobs:
             bundle exec fastlane android_staging
 
 workflows:
-  build-android-staging:
+  android-staging:
     jobs:
       - node:
           filters:
             branches:
               only:
                 - staging
-      - android-build-and-test:
+      - build-and-deploy-android:
           requires:
             - node
