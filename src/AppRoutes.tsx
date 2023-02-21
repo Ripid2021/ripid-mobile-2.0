@@ -7,10 +7,10 @@ import {
   NavigationContainer,
   NavigationContainerRef,
 } from '@react-navigation/native';
-import {RootStackParamList} from './hooks/useAppNavigation';
-import OnboardingStack from './stacks/onboarding/OnboardingStack';
+import {RootStackParamList} from '~/hooks/useAppNavigation';
+import OnboardingStack from '~/stacks/onboarding/OnboardingStack';
 import {createStackNavigator} from '@react-navigation/stack';
-import useI18n from './hooks/useI18n';
+import useI18n from '~/hooks/useI18n';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -36,7 +36,7 @@ const AppRoutes = () => {
   const navigationRef =
     useRef<NavigationContainerRef<RootStackParamList>>(null);
 
-    useI18n();
+  useI18n();
   return (
     <SafeAreaProvider>
       <QueryClientProvider client={queryClient}>
