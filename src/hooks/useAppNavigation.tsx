@@ -1,14 +1,26 @@
 // import React from 'react';
 
 import {
+  // eslint-disable-next-line @typescript-eslint/no-restricted-imports
   useNavigation,
   RouteProp,
+  // eslint-disable-next-line @typescript-eslint/no-restricted-imports
   useRoute,
   NavigationProp,
 } from '@react-navigation/native';
 
 export type RootStackParamList = {
-  Home: undefined;
+  Welcome: undefined;
+  OnboardingStack: {
+    screen: 'Welcome';
+    params?: RootStackParamList['Welcome'];
+  };
+
+  Login: undefined;
+  AuthStack: {
+    screen: 'Login';
+    params?: RootStackParamList['Login'];
+  };
 };
 
 export const useAppNavigation = () => {
