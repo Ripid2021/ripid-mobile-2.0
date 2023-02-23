@@ -53,7 +53,7 @@ const AppRoutes = () => {
               name="OnboardingStack"
               component={OnboardingStack}
               options={{
-                headerShown: true,
+                headerShown: false,
               }}
             />
           </RootStackNavigator.Navigator>
