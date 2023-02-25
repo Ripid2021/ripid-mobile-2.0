@@ -3,7 +3,7 @@ import React from 'react';
 import HeaderBack from '~/custom-libs/HeaderBack';
 import {TRANSPARENT} from '~/theme/color';
 import {centerHeaderTitle} from '~/theme/style';
-import Welcome from './screens/Login';
+import Login from './screens/Login';
 
 const AuthStackNavigator = createStackNavigator();
 
@@ -17,9 +17,24 @@ const AuthStack = () => {
         headerLeft: props => <HeaderBack {...props} />,
       }}
       initialRouteName="Login">
-      <AuthStackNavigator.Screen name="Login" component={Welcome} />
+      {AuthScreens.map(item => (
+        <AuthStackNavigator.Screen
+          key={item.name}
+          options={item.options}
+          name={item.name}
+          component={item.component}
+        />
+      ))}
     </AuthStackNavigator.Navigator>
   );
 };
+
+export const AuthScreens = [
+  {
+    options: {headerShown: false},
+    name: 'Login',
+    component: Login,
+  },
+] as const;
 
 export default AuthStack;

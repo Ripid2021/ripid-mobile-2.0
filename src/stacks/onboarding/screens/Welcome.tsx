@@ -17,8 +17,8 @@ const Welcome = () => {
     });
   };
   const _handleAccountAlready = () => {
-    navigation.navigate('OnboardingStack', {
-      screen: 'SelectHabit',
+    navigation.navigate('AuthStack', {
+      screen: 'Login',
     });
   };
   return (

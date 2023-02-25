@@ -8,6 +8,7 @@ import {
   useRoute,
   NavigationProp,
 } from '@react-navigation/native';
+import {AuthScreens} from '~/stacks/auth/AuthStack';
 import {OnboardingScreens} from '~/stacks/onboarding/OnboardingStack';
 
 export type RootStackParamList = {
@@ -20,8 +21,8 @@ export type RootStackParamList = {
 
   Login: undefined;
   AuthStack: {
-    screen: 'Login';
-    params?: RootStackParamList['Login'];
+    screen: (typeof AuthScreens)[number]['name'];
+    params?: RootStackParamList[(typeof AuthScreens)[number]['name']];
   };
 };
 

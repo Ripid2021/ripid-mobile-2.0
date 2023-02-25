@@ -1,20 +1,34 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import React from 'react';
 import {t} from 'i18next';
-import Icon from '~/common/Icon';
-import {scaleSize} from '~/theme/size';
-import Category from '~/stacks/onboarding/components/Category';
+import {deviceWidth, scaleSize} from '~/theme/size';
+import FastImage from 'react-native-fast-image';
+import {AUTH} from '~/asset/graphics';
+import {LIGHT_BACKGROUND, WHITE} from '~/theme/color';
 
 const Welcome = () => {
   return (
-    <View>
-      <Text>Login</Text>
-      {/* <Icon size={scaleSize(32)} name="eye" fill={'black'} />
-      <Category /> */}
+    <View style={styles.container}>
+      <FastImage style={styles.banner} source={AUTH.LOGIN_BANNER} />
+      <View style={styles.content}></View>
     </View>
   );
 };
 
 export default Welcome;
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: LIGHT_BACKGROUND,
+    flex: 1,
+  },
+  banner: {
+    width: deviceWidth,
+    height: scaleSize(300),
+  },
+  content: {
+    flex: 1,
+    backgroundColor: WHITE,
+  },
+});
 
 // const styles = StyleSheet.create({});
