@@ -8,12 +8,14 @@ import {
   useRoute,
   NavigationProp,
 } from '@react-navigation/native';
+import {OnboardingScreens} from '~/stacks/onboarding/OnboardingStack';
 
 export type RootStackParamList = {
   Welcome: undefined;
+  SelectHabit: undefined;
   OnboardingStack: {
-    screen: 'Welcome';
-    params?: RootStackParamList['Welcome'];
+    screen: (typeof OnboardingScreens)[number]['name'];
+    params?: RootStackParamList[(typeof OnboardingScreens)[number]['name']];
   };
 
   Login: undefined;

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Svg, Path} from 'react-native-svg';
+import {Svg, Path, Rect} from 'react-native-svg';
 
 const svgs = {
   eye: {
@@ -24,6 +24,25 @@ const svgs = {
       </Svg>
     ),
     viewBox: '0 0 9 15',
+  },
+  circle: {
+    svg: (
+      <Svg>
+        <Rect x="1.5" y="1" width="22" height="22" rx="11" />
+        <Rect x="1.5" y="1" width="22" height="22" rx="11" stroke-width="2" />
+      </Svg>
+    ),
+    viewBox: '0 0 25 24',
+  },
+  'circle-fill': {
+    svg: (
+      <Svg>
+        <Rect x="1.5" y="1" width="22" height="22" rx="11" />
+        <Rect x="1.5" y="1" width="22" height="22" rx="11" fill="white" />
+        <Rect x="1.5" y="1" width="22" height="22" rx="11" strokeWidth="2" />
+      </Svg>
+    ),
+    viewBox: '0 0 25 24',
   },
 } as const;
 

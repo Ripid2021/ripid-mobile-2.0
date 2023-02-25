@@ -11,9 +11,14 @@ import {ONBOARDING} from '~/asset/graphics';
 
 const Welcome = () => {
   const navigation = useAppNavigation();
-  const login = () => {
-    navigation.navigate('AuthStack', {
-      screen: 'Login',
+  const _handleGetStarted = () => {
+    navigation.navigate('OnboardingStack', {
+      screen: 'SelectHabit',
+    });
+  };
+  const _handleAccountAlready = () => {
+    navigation.navigate('OnboardingStack', {
+      screen: 'SelectHabit',
     });
   };
   return (
@@ -24,12 +29,16 @@ const Welcome = () => {
       <View style={styles.overlay}>
         <Text style={styles.heading}>{t('welcomeToRipid')}</Text>
         <Text style={styles.intro}>{t('intro')}</Text>
-        <Button style={styles.start} onPress={login} title={t('startNow')} />
+        <Button
+          style={styles.start}
+          onPress={_handleGetStarted}
+          title={t('startNow')}
+        />
         <Button
           style={styles.hasAccount}
           backgroundColor={BROWN}
           color={WHITE}
-          onPress={login}
+          onPress={_handleAccountAlready}
           title={t('hasAccountAlready')}
         />
       </View>
