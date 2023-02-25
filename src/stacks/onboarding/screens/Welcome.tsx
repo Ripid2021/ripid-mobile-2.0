@@ -5,6 +5,7 @@ import Icon from '~/common/Icon';
 import {scaleSize} from '~/theme/size';
 import Category from '~/stacks/onboarding/components/Category';
 import {useAppNavigation} from '~/hooks/useAppNavigation';
+import {FONT_FAMILY} from '~/theme/font-family';
 
 const Welcome = () => {
   const navigation = useAppNavigation();
@@ -15,7 +16,7 @@ const Welcome = () => {
   };
   return (
     <View>
-      <Text>{t('welcomeToRipid')}</Text>
+      <Text style={styles.text}>{t('welcomeToRipid')}</Text>
       <Icon size={scaleSize(32)} name="eye" fill={'black'} />
       <Category />
       <Button onPress={login} title="Press" />
@@ -25,4 +26,8 @@ const Welcome = () => {
 
 export default Welcome;
 
-// const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  text: {
+    fontFamily: FONT_FAMILY[500],
+  },
+});
