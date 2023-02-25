@@ -1,11 +1,13 @@
-import {Button, StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {t} from 'i18next';
-import Icon from '~/common/Icon';
-import {scaleSize} from '~/theme/size';
-import Category from '~/stacks/onboarding/components/Category';
+import {bottomPadding, scaleSize} from '~/theme/size';
 import {useAppNavigation} from '~/hooks/useAppNavigation';
 import {FONT_FAMILY} from '~/theme/font-family';
+import Button from '~/common/Button';
+import {BODY_TEXT, BROWN, LIGHT_BACKGROUND, WHITE} from '~/theme/color';
+import FastImage from 'react-native-fast-image';
+import {ONBOARDING} from '~/asset/graphics';
 
 const Welcome = () => {
   const navigation = useAppNavigation();
@@ -15,11 +17,22 @@ const Welcome = () => {
     });
   };
   return (
-    <View>
-      <Text style={styles.text}>{t('welcomeToRipid')}</Text>
-      <Icon size={scaleSize(32)} name="eye" fill={'black'} />
-      <Category />
-      <Button onPress={login} title="Press" />
+    <View style={styles.container}>
+      <View style={styles.banner}>
+        <FastImage style={styles.image} source={ONBOARDING.WELCOME} />
+      </View>
+      <View style={styles.overlay}>
+        <Text style={styles.heading}>{t('welcomeToRipid')}</Text>
+        <Text style={styles.intro}>{t('intro')}</Text>
+        <Button style={styles.start} onPress={login} title={t('startNow')} />
+        <Button
+          style={styles.hasAccount}
+          backgroundColor={BROWN}
+          color={WHITE}
+          onPress={login}
+          title={t('hasAccountAlready')}
+        />
+      </View>
     </View>
   );
 };
@@ -27,7 +40,42 @@ const Welcome = () => {
 export default Welcome;
 
 const styles = StyleSheet.create({
-  text: {
-    fontFamily: FONT_FAMILY[500],
+  container: {
+    backgroundColor: LIGHT_BACKGROUND,
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    flex: 1,
+  },
+  overlay: {
+    backgroundColor: WHITE,
+    alignSelf: 'stretch',
+    borderTopEndRadius: scaleSize(40),
+    borderTopStartRadius: scaleSize(40),
+    padding: scaleSize(24),
+    paddingBottom: bottomPadding,
+    alignItems: 'center',
+  },
+  image: {
+    width: scaleSize(300),
+    height: scaleSize(300),
+  },
+  banner: {
+    flex: 1,
+    justifyContent: 'center',
+  },
+  heading: {
+    fontFamily: FONT_FAMILY[700],
+    fontSize: scaleSize(32),
+    color: BROWN,
+  },
+  intro: {
+    textAlign: 'center',
+    color: BODY_TEXT,
+  },
+  start: {
+    marginTop: scaleSize(24),
+  },
+  hasAccount: {
+    marginTop: scaleSize(24),
   },
 });

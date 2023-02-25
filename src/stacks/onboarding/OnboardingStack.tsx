@@ -17,7 +17,13 @@ const OnboardingStack = () => {
         headerLeft: props => <HeaderBack {...props} />,
       }}
       initialRouteName="Welcome">
-      <OnboardingStackNavigator.Screen name="Welcome" component={Welcome} />
+      <OnboardingStackNavigator.Screen
+        options={{
+          headerShown: false,
+        }}
+        name="Welcome"
+        component={Welcome}
+      />
     </OnboardingStackNavigator.Navigator>
   );
 };
