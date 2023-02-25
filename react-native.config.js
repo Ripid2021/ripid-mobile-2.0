@@ -4,4 +4,11 @@ module.exports = {
     android: {},
   },
   assets: ['./src/asset/fonts'],
+  dependencies: {
+    'react-native-vector-icons': {
+      platforms: {
+        ios: null,
+      },
+    },
+  },
 };

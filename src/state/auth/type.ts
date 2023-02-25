@@ -1,1 +1,1 @@
-export type TLang = "en" | "vi"
+export type TLang = 'en' | 'vi';

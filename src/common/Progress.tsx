@@ -1,10 +1,11 @@
 import {StyleSheet, View} from 'react-native';
 import React, {useCallback} from 'react';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {scaleSize, statusBarHeight} from '~/theme/size';
 import {BODY_TEXT, WHITE, YELLOW_2} from '~/theme/color';
-import Icon from '~/common/Icon';
 import Text from '~/common/Text';
 import {FONT_FAMILY} from '~/theme/font-family';
+import {t} from 'i18next';
 
 type TDataItem = {
   key: string;
@@ -39,16 +40,18 @@ const Progress = ({index = 1}: TProps) => {
       const isCurrent = index === idx;
       const isPrevious = index > idx;
 
-      const name = isCurrent ? 'circle-fill' : 'circle';
-      const fill = isCurrent ? YELLOW_2 : WHITE;
-
-      const stroke = isCurrent || isPrevious ? YELLOW_2 : BODY_TEXT;
+      const name = isPrevious ? 'circle-slice-8' : 'circle-outline';
+      const color = isCurrent || isPrevious ? YELLOW_2 : BODY_TEXT;
 
       return (
         <View key={item.key} style={styles.item}>
-          <Icon size={scaleSize(30)} stroke={stroke} fill={fill} name={name} />
+          <MaterialCommunityIcons
+            color={color}
+            size={scaleSize(24)}
+            name={name}
+          />
           <Text color={BODY_TEXT} style={styles.text}>
-            {item.key}
+            {t(item.key)}
           </Text>
         </View>
       );
@@ -62,7 +65,7 @@ export default Progress;
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: scaleSize(16),
+    paddingHorizontal: scaleSize(12),
     paddingTop: statusBarHeight + scaleSize(16),
     backgroundColor: WHITE,
     flexDirection: 'row',
