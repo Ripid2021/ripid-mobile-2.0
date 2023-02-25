@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
     alignSelf: 'stretch',
     borderTopEndRadius: scaleSize(40),
     borderTopStartRadius: scaleSize(40),
-    padding: scaleSize(24),
+    padding: scaleSize(40),
     paddingBottom: bottomPadding,
     alignItems: 'center',
   },
@@ -71,9 +71,10 @@ const styles = StyleSheet.create({
   intro: {
     textAlign: 'center',
     color: BODY_TEXT,
+    marginTop: scaleSize(16),
   },
   start: {
-    marginTop: scaleSize(24),
+    marginTop: scaleSize(32),
   },
   hasAccount: {
     marginTop: scaleSize(24),
