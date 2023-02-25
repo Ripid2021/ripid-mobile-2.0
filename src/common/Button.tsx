@@ -38,9 +38,7 @@ const Button = ({
   }, [backgroundColor, borderRadius, style]);
   return (
     <TouchableOpacity style={combinedStyle} onPress={onPress}>
-      <Text color={color} style={styles.title}>
-        {title}
-      </Text>
+      <Text style={[styles.title, color ? {color} : {}]}>{title}</Text>
     </TouchableOpacity>
   );
 };

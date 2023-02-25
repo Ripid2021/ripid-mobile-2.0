@@ -4,3 +4,6 @@ export const WHITE = '#FFFFFF';
 export const YELLOW_2 = '#F1D52B';
 export const BROWN = '#523923';
 export const BODY_TEXT = '#9A9A9A';
+export const BLUE = '#1890FF';
+export const LIGHT_GREY = '#DEDEDE';
+export const BLACK = '#191D23';

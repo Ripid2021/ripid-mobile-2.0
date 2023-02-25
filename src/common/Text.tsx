@@ -9,7 +9,7 @@ type TProps = TextProps & {
 
 const Text = ({color = BROWN, ...props}: TProps) => {
   return (
-    <Base {...props} style={[styles.base, props.style, {color}]}>
+    <Base {...props} style={[styles.base, {color}, props.style]}>
       {props.children}
     </Base>
   );

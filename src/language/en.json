@@ -7,5 +7,11 @@
     "target":"Mục tiêu",
     "register":"Đăng ký",
     "verify":"Xác minh",
-    "profile":"Hồ sơ"
+    "profile":"Hồ sơ",
+    "email":"Email",
+    "password":"Password",
+    "login":"Log in",
+    "forgotPassword":"Forgot password",
+    "orLoginWith":"Hoặc đăng ký với"
+
 }

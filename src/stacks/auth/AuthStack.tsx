@@ -1,6 +1,8 @@
 import {createStackNavigator} from '@react-navigation/stack';
 import React from 'react';
 import HeaderBack from '~/custom-libs/HeaderBack';
+import ForgotPassword from '~/stacks/auth/screens/ForgotPassword';
+import SignUp from '~/stacks/auth/screens/SignUp';
 import {TRANSPARENT} from '~/theme/color';
 import {centerHeaderTitle} from '~/theme/style';
 import Login from './screens/Login';
@@ -34,6 +36,16 @@ export const AuthScreens = [
     options: {headerShown: false},
     name: 'Login',
     component: Login,
+  },
+  {
+    options: {headerShown: true},
+    name: 'SignUp',
+    component: SignUp,
+  },
+  {
+    options: {headerShown: true},
+    name: 'ForgotPassword',
+    component: ForgotPassword,
   },
 ] as const;
 
