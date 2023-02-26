@@ -1,5 +1,6 @@
 export const ONBOARDING = {
   WELCOME: require('../graphics/onboarding/welcome.png'),
+  WEAK_UP: require('../graphics/onboarding/weakup.png'),
 };
 
 export const AUTH = {

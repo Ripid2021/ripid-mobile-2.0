@@ -1,9 +1,6 @@
 import {createAction, createSlice} from '@reduxjs/toolkit';
-import {TLang} from './type';
 
-type TInitialState = {
-  lang?: TLang;
-};
+type TInitialState = {};
 
 const initialState: TInitialState = {};
 
@@ -16,15 +13,13 @@ export const setLanguage = createAction(
   }),
 );
 
-export const auth = createSlice({
-  name: 'auth',
+export const onboarding = createSlice({
+  name: 'onboarding',
   initialState,
   reducers: {},
   extraReducers: builder => {
-    builder.addCase(setLanguage, (state, {payload}) => {
-      state.lang = payload.lang;
-    });
+    builder.addCase(setLanguage, (state, {payload}) => {});
   },
 });
 
-export default auth.reducer;
+export default onboarding.reducer;

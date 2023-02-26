@@ -13,7 +13,9 @@
 
     "login":"Đăng nhập",
     "forgotPassword":"Quên mật khẩu",
-    "orLoginWith":"Hoặc đăng ký với"
+    "orLoginWith":"Hoặc đăng ký với",
+    "selectHabitToStart":"Chọn một thói quen mà bạn muốn bắt đầu"
+
 
 
 }

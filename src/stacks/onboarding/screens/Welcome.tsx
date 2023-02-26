@@ -76,6 +76,7 @@ const styles = StyleSheet.create({
     fontFamily: FONT_FAMILY[700],
     fontSize: scaleSize(32),
     color: BROWN,
+    textAlign: 'center',
   },
   intro: {
     textAlign: 'center',

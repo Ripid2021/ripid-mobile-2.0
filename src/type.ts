@@ -5,3 +5,9 @@ export type TScreen = {
   component: () => JSX.Element;
   name: string;
 };
+
+export type TBaseError = {
+  error: string;
+  message: string;
+  statusCode: number;
+};
