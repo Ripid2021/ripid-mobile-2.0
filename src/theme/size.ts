@@ -81,3 +81,9 @@ export const scaleSize = (size: number) => {
 
 export const bottomHeight = getBottomSpace();
 export const bottomPadding = bottomHeight + 17;
+export const S5 = scaleSize(5);
+export const S10 = scaleSize(10);
+export const S16 = scaleSize(16);
+export const S20 = scaleSize(20);
+export const S24 = scaleSize(24);
+export const S32 = scaleSize(32);

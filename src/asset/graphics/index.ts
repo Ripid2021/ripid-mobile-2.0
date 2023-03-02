@@ -9,3 +9,10 @@ export const AUTH = {
   GOOGLE: require('../graphics/auth/google.png'),
   APPLE: require('../graphics/auth/apple.png'),
 };
+
+export const BOTTOM_TAB = {
+  GROUP: require('../graphics/bottomTab/group.png'),
+  GROUP_SELECTED: require('../graphics/bottomTab/group_selected.png'),
+  COMMUNITY: require('../graphics/bottomTab/community.png'),
+  COMMUNITY_SELECTED: require('../graphics/bottomTab/community_selected.png'),
+};
