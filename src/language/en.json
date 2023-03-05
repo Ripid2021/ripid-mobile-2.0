@@ -10,6 +10,7 @@
     "profile":"Hồ sơ",
     "email":"Email",
     "password":"Password",
+    "reTypePassword":"Nhập lại mật khẩu",
     "login":"Log in",
     "forgotPassword":"Forgot password",
     "orLoginWith":"Hoặc đăng ký với",
@@ -26,7 +27,18 @@
     "whyMaintainHabit":"Vì sao bạn muốn duy trì thói quen này?",
     "inputHabitTarget":"Nhập mục đích thói quen",
     "goBack":"Trở lại",
-    "continue" :"Tiếp tục"
+    "continue" :"Tiếp tục",
+    "typeYourEmail" :"Nhập email của bạn",
+    "typeOTP": "Nhập 4 chữ số mà chúng tôi đã gửi qua email {{email}}",
+    "resendOTP":"Gửi lại mã xác thực",
+    "agreeWith":"Tôi đồng ý với {{text}}",
+    "termsConditions":"Điều khoản sử dụng",
+    "passwordMustHave":"Mật khẩu phải có ít nhất:",
+    "atLeast8Chars":"Ít nhất 8 ký tự",
+    "haveNumber":"Ký tự số",
+    "haveLowercase":"Ký tự thường",
+    "haveUppercase":"Ký tự hoa",
+    "createPassword":"Tạo mật khẩu"
 
 
 

@@ -5,7 +5,7 @@ import {ONBOARDING_PROGRESS} from '~/constants';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {t} from 'i18next';
 import Text from '~/common/Text';
-import {bodyText, headlineText} from '~/theme/style';
+import {bodyText, borderCard, headlineText} from '~/theme/style';
 import TextInput from '~/common/TextInput';
 import {BROWN, WHITE, YELLOW} from '~/theme/color';
 import {bottomPadding, scaleSize} from '~/theme/size';
@@ -32,7 +32,7 @@ const HabitSetting = () => {
       <Progress index={1} data={ONBOARDING_PROGRESS} />
       <KeyboardAwareScrollView contentContainerStyle={styles.contentContainer}>
         <Text style={headlineText}>{t('targetSetting')}</Text>
-        <View style={styles.card}>
+        <View style={borderCard}>
           <TextInput
             label={t('enterTarget')}
             labelStyle={bodyText}
@@ -82,14 +82,6 @@ const HabitSetting = () => {
 export default HabitSetting;
 
 const styles = StyleSheet.create({
-  card: {
-    backgroundColor: WHITE,
-    paddingHorizontal: scaleSize(16),
-    paddingVertical: scaleSize(24),
-    borderWidth: scaleSize(2),
-    borderRadius: scaleSize(16),
-    borderColor: YELLOW,
-  },
   contentContainer: {
     paddingHorizontal: scaleSize(16),
     paddingBottom: bottomPadding * 3,

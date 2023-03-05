@@ -10,6 +10,7 @@
     "profile":"Hồ sơ",
     "email":"Email",
     "password":"Mật khẩu",
+    "reTypePassword":"Nhập lại mật khẩu",
 
     "login":"Đăng nhập",
     "forgotPassword":"Quên mật khẩu",
@@ -27,12 +28,14 @@
     "whyMaintainHabit":"Vì sao bạn muốn duy trì thói quen này?",
     "inputHabitTarget":"Nhập mục đích thói quen",
     "goBack":"Trở lại",
-    "continue" :"Tiếp tục"
-
-
-
-
-
+    "continue" :"Tiếp tục",
+    "typeYourEmail" :"Nhập email của bạn",
+    "typeOTP": "Nhập 4 chữ số mà chúng tôi đã gửi qua email {{email}}",
+    "resendOTP":"Gửi lại mã xác thực",
+    "agreeWith":"Tôi đồng ý với {{text}}",
+    "termsConditions":"Điều khoản sử dụng",
+    "passwordMustHave":"Mật khẩu phải có ít nhất:",
+    "createPassword":"Tạo mật khẩu"
 
 
 }

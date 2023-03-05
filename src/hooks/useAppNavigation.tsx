@@ -15,6 +15,8 @@ export type RootStackParamList = {
   Welcome: undefined;
   SelectHabit: undefined;
   HabitSetting: undefined;
+  VerifyOTP: undefined;
+  CreatePassword: undefined;
   OnboardingStack: {
     screen: (typeof OnboardingScreens)[number]['name'];
     params?: RootStackParamList[(typeof OnboardingScreens)[number]['name']];

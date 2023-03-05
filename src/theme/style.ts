@@ -1,5 +1,6 @@
+import {ViewStyle} from 'react-native';
 import {TextStyle} from 'react-native/types';
-import {BLACK} from '~/theme/color';
+import {BLACK, WHITE, YELLOW} from '~/theme/color';
 import {FONT_FAMILY} from '~/theme/font-family';
 import {scaleSize} from '~/theme/size';
 
@@ -21,4 +22,13 @@ export const bodyText: TextStyle = {
   fontSize: scaleSize(14),
   fontFamily: FONT_FAMILY[400],
   fontWeight: '400',
+};
+
+export const borderCard: ViewStyle = {
+  backgroundColor: WHITE,
+  paddingHorizontal: scaleSize(16),
+  paddingVertical: scaleSize(24),
+  borderWidth: scaleSize(2),
+  borderRadius: scaleSize(16),
+  borderColor: YELLOW,
 };

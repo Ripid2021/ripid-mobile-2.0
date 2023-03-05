@@ -1,15 +1,13 @@
-import {
-  createStackNavigator,
-  StackNavigationOptions,
-} from '@react-navigation/stack';
+import {createStackNavigator} from '@react-navigation/stack';
 import React from 'react';
 import HeaderBack from '~/custom-libs/HeaderBack';
+import CreatePassword from '~/stacks/onboarding/screens/CreatePassword';
 import HabitSetting from '~/stacks/onboarding/screens/HabitSetting';
 import Register from '~/stacks/onboarding/screens/Register';
 import SelectHabit from '~/stacks/onboarding/screens/SelectHabit';
+import VerifyOTP from '~/stacks/onboarding/screens/VerifyOTP';
 import {TRANSPARENT} from '~/theme/color';
 import {centerHeaderTitle} from '~/theme/style';
-import {TScreen} from '~/type';
 import Welcome from './screens/Welcome';
 
 const OnboardingStackNavigator = createStackNavigator();
@@ -56,6 +54,16 @@ export const OnboardingScreens = [
     options: {headerShown: false},
     name: 'Register',
     component: Register,
+  },
+  {
+    options: {headerShown: false},
+    name: 'VerifyOTP',
+    component: VerifyOTP,
+  },
+  {
+    options: {headerShown: false},
+    name: 'CreatePassword',
+    component: CreatePassword,
   },
 ] as const;
 
