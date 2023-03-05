@@ -1,3 +1,5 @@
+import {TProgress} from '~/type';
+
 export const SUPPORTED_LANGUAGES = [
   {
     title: 'Tiếng việt',
@@ -12,3 +14,21 @@ export const SUPPORTED_LANGUAGES = [
 export const SUPPORTED_LANGUAGE_KEYS = SUPPORTED_LANGUAGES.map(
   lang => lang.key,
 );
+
+export const ONBOARDING_PROGRESS: TProgress[] = [
+  {
+    key: 'habit',
+  },
+  {
+    key: 'target',
+  },
+  {
+    key: 'register',
+  },
+  {
+    key: 'verify',
+  },
+  {
+    key: 'profile',
+  },
+];

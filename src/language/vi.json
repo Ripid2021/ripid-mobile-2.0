@@ -18,6 +18,21 @@
 
     "group":"Nhóm",
     "me":"Tôi",
-    "community":"Cộng đồng"
+    "community":"Cộng đồng",
+    "selectThisHabit": "{{count}} người chọn thói quen này",
+    "targetSetting":"Thiết lập mục tiêu mỗi ngày",
+    "enterTarget":"Nhập mục tiêu bạn sẽ thực hiện mỗi ngày",
+    "exampleTarget":"Ngủ sớm trước 11g",
+    "ripidRemindAt":"Ripid sẽ nhắc nhở bạn vào lúc",
+    "whyMaintainHabit":"Vì sao bạn muốn duy trì thói quen này?",
+    "inputHabitTarget":"Nhập mục đích thói quen",
+    "goBack":"Trở lại",
+    "continue" :"Tiếp tục"
+
+
+
+
+
+
 
 }

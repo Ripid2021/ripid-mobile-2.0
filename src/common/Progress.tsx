@@ -6,37 +6,16 @@ import {BODY_TEXT, WHITE, YELLOW_2} from '~/theme/color';
 import Text from '~/common/Text';
 import {FONT_FAMILY} from '~/theme/font-family';
 import {t} from 'i18next';
-
-type TDataItem = {
-  key: string;
-};
-
-const data: TDataItem[] = [
-  {
-    key: 'habit',
-  },
-  {
-    key: 'target',
-  },
-  {
-    key: 'register',
-  },
-  {
-    key: 'verify',
-  },
-  {
-    key: 'profile',
-  },
-];
+import {TProgress} from '~/type';
 
 type TProps = {
-  data: TDataItem[];
+  data: TProgress[];
   index: number;
 };
 
-const Progress = ({index = 1}: TProps) => {
+const Progress = ({index = 1, data = []}: TProps) => {
   const _renderItem = useCallback(
-    (item: TDataItem, idx: number) => {
+    (item: TProgress, idx: number) => {
       const isCurrent = index === idx;
       const isPrevious = index > idx;
 

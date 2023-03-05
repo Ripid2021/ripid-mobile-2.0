@@ -1,4 +1,10 @@
-import {StyleSheet, View, FlatList, TouchableOpacity} from 'react-native';
+import {
+  StyleSheet,
+  View,
+  FlatList,
+  TouchableOpacity,
+  ListRenderItem,
+} from 'react-native';
 import React, {useCallback} from 'react';
 import Progress from '~/common/Progress';
 import {useGetHabitSummary} from '~/state/onboarding';
@@ -7,20 +13,33 @@ import {t} from 'i18next';
 import {BLACK, YELLOW} from '~/theme/color';
 import {bottomPadding, scaleSize} from '~/theme/size';
 import {FONT_FAMILY} from '~/theme/font-family';
-import Text from '~/common/Text';
 import Category from '~/stacks/onboarding/components/Category';
 import {normalize} from '@rneui/themed';
+import {THabitItem} from '~/state/onboarding/type';
+import {ONBOARDING_PROGRESS} from '~/constants';
+import {useAppNavigation} from '~/hooks/useAppNavigation';
+import {headlineText} from '~/theme/style';
 
 const SelectHabit = () => {
-  const {data} = useGetHabitSummary({});
+  const {data = []} = useGetHabitSummary({});
+  const navigation = useAppNavigation();
 
-  const _renderItem = useCallback(
-    () => (
-      <TouchableOpacity>
-        <Category />
+  const _handleHabitPress = useCallback(
+    (item: THabitItem) => () => {
+      navigation.navigate('OnboardingStack', {
+        screen: 'HabitSetting',
+      });
+    },
+    [navigation],
+  );
+
+  const _renderItem = useCallback<ListRenderItem<THabitItem>>(
+    ({item, index}) => (
+      <TouchableOpacity key={item.habitKey}>
+        <Category onPress={_handleHabitPress(item)} index={index} data={item} />
       </TouchableOpacity>
     ),
-    [],
+    [_handleHabitPress],
   );
   const _renderSeparator = useCallback(
     () => <View style={styles.separator} />,
@@ -35,7 +54,7 @@ const SelectHabit = () => {
             style: styles.habit,
           },
         ]}
-        style={styles.headline}>
+        style={headlineText}>
         {t('selectHabitToStart')}
       </ParsedText>
     ),
@@ -44,11 +63,11 @@ const SelectHabit = () => {
 
   return (
     <>
-      <Progress />
-      <FlatList
+      <Progress index={0} data={ONBOARDING_PROGRESS} />
+      <FlatList<THabitItem>
         ListHeaderComponent={_renderHeader}
         ItemSeparatorComponent={_renderSeparator}
-        data={Array(10).fill(1)}
+        data={data}
         renderItem={_renderItem}
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.container}
@@ -64,13 +83,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: normalize(16),
     paddingBottom: bottomPadding,
   },
-  headline: {
-    color: BLACK,
-    fontSize: scaleSize(24),
-    fontFamily: FONT_FAMILY[700],
-    textAlign: 'center',
-    paddingVertical: normalize(24),
-  },
+
   habit: {
     fontSize: scaleSize(40),
     color: YELLOW,

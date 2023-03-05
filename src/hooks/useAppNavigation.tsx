@@ -14,12 +14,17 @@ import {OnboardingScreens} from '~/stacks/onboarding/OnboardingStack';
 export type RootStackParamList = {
   Welcome: undefined;
   SelectHabit: undefined;
+  HabitSetting: undefined;
   OnboardingStack: {
     screen: (typeof OnboardingScreens)[number]['name'];
     params?: RootStackParamList[(typeof OnboardingScreens)[number]['name']];
   };
 
   Login: undefined;
+  ForgotPassword: undefined;
+  SignUp: undefined;
+  Register: undefined;
+
   AuthStack: {
     screen: (typeof AuthScreens)[number]['name'];
     params?: RootStackParamList[(typeof AuthScreens)[number]['name']];

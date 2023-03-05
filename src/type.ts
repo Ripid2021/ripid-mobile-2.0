@@ -11,3 +11,13 @@ export type TBaseError = {
   message: string;
   statusCode: number;
 };
+
+export type TTimestamps = {
+  _id?: string;
+  createdAt?: string;
+  updatedAt?: string;
+};
+
+export type TProgress = {
+  key: string;
+};

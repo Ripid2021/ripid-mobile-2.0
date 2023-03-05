@@ -4,6 +4,8 @@ import {
 } from '@react-navigation/stack';
 import React from 'react';
 import HeaderBack from '~/custom-libs/HeaderBack';
+import HabitSetting from '~/stacks/onboarding/screens/HabitSetting';
+import Register from '~/stacks/onboarding/screens/Register';
 import SelectHabit from '~/stacks/onboarding/screens/SelectHabit';
 import {TRANSPARENT} from '~/theme/color';
 import {centerHeaderTitle} from '~/theme/style';
@@ -44,6 +46,16 @@ export const OnboardingScreens = [
     options: {headerShown: false},
     name: 'SelectHabit',
     component: SelectHabit,
+  },
+  {
+    options: {headerShown: false},
+    name: 'HabitSetting',
+    component: HabitSetting,
+  },
+  {
+    options: {headerShown: false},
+    name: 'Register',
+    component: Register,
   },
 ] as const;
 

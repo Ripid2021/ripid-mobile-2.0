@@ -48,6 +48,8 @@ export default Button;
 const styles = StyleSheet.create({
   base: {
     paddingVertical: scaleSize(16),
+    paddingHorizontal: scaleSize(24),
+
     backgroundColor: YELLOW_2,
     borderRadius: scaleSize(28),
     justifyContent: 'center',

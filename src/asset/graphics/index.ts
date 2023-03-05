@@ -1,7 +1,50 @@
 export const ONBOARDING = {
   WELCOME: require('../graphics/onboarding/welcome.png'),
-  WEAK_UP: require('../graphics/onboarding/weakup.png'),
-};
+  WAKE_UP_EARLY: require('../graphics/onboarding/weakup.png'),
+  DRINK_WATER: require('../graphics/onboarding/drink-water.png'),
+  DO_EXERCISE: require('../graphics/onboarding/do-exercise.png'),
+
+  READING_BOOK: require('../graphics/onboarding/reading-book.png'),
+  DANCE: require('../graphics/onboarding/dance.png'),
+  SING: require('../graphics/onboarding/sing.png'),
+  CYCLE: require('../graphics/onboarding/cycle.png'),
+
+  SIT_UP: require('../graphics/onboarding/sit-up.png'),
+  PUSH_UP: require('../graphics/onboarding/push-up.png'),
+  STUDY: require('../graphics/onboarding/study.png'),
+  STUDY_LANGUAGE: require('../graphics/onboarding/study-language.png'),
+
+  JOURNAL: require('../graphics/onboarding/journal.png'),
+  LISTEN_TO_PODCAST: require('../graphics/onboarding/listen-to-podcast.png'),
+  PRACTICE_MUSIC: require('../graphics/onboarding/practice-music.png'),
+  DIET: require('../graphics/onboarding/diet.png'),
+
+  CONCENTRATE: require('../graphics/onboarding/focus.png'),
+  DRAW: require('../graphics/onboarding/draw.png'),
+} as const;
+
+// [
+//   'DO_EXERCISE',
+//   'DRINK_WATER',
+//   'WALK',
+//   'WAKE_UP_EARLY',
+//   'READING_BOOK',
+//   'DRAW',
+//   'DANCE',
+//   'PRACTICE_MUSIC',
+//   'YOGA',
+//   'SING',
+//   'LISTEN_TO_PODCAST',
+//   'JOURNAL',
+//   'MEDITATE',
+//   'STUDY',
+//   'STUDY_LANGUAGE',
+//   'CONCENTRATE',
+//   'DIET',
+//   'CYCLE',
+//   'SIT_UP',
+//   'PUSH_UP',
+// ];
 
 export const AUTH = {
   LOGIN_BANNER: require('../graphics/auth/login-banner.png'),

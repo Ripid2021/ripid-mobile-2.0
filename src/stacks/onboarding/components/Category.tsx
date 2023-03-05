@@ -1,31 +1,64 @@
-import {StyleSheet, View} from 'react-native';
-import React from 'react';
+import {StyleSheet, TouchableOpacity, View} from 'react-native';
+import React, {useMemo} from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import {scaleSize} from '~/theme/size';
-import {BLUE_1, BLUE_GRADIENT, WHITE} from '~/theme/color';
+import {WHITE} from '~/theme/color';
 import FastImage from 'react-native-fast-image';
 import {ONBOARDING} from '~/asset/graphics';
 import Text from '~/common/Text';
 import {FONT_FAMILY} from '~/theme/font-family';
 import UserList from '~/common/UserList';
+import {THabitItem} from '~/state/onboarding/type';
+import {t} from 'i18next';
+import * as COLORS from '~/theme/color';
 
-const Category = () => {
+type TProps = {
+  data: THabitItem;
+  index: number;
+  onPress: () => void;
+};
+const Category = ({data, index, onPress}: TProps) => {
+  const isOdd = useMemo(() => index % 2 === 0, [index]);
+  const LIST_GRADIENT = useMemo(
+    () =>
+      Object.values(COLORS).filter(item => Array.isArray(item)) as string[][],
+    [],
+  );
+  const uri = useMemo(
+    () => ONBOARDING[data.habitKey] || ONBOARDING.WAKE_UP_EARLY,
+    [data.habitKey],
+  );
+
+  const colors = useMemo<string[]>(
+    () => LIST_GRADIENT[index % LIST_GRADIENT.length],
+    [LIST_GRADIENT, index],
+  );
+
   return (
-    <>
+    <TouchableOpacity onPress={onPress}>
       <LinearGradient
         start={{x: 0, y: 0}}
         end={{x: 1, y: 1}}
-        colors={BLUE_GRADIENT}
-        style={styles.item}>
+        colors={colors}
+        // eslint-disable-next-line react-native/no-inline-styles
+        style={[styles.item, {flexDirection: isOdd ? 'row-reverse' : 'row'}]}>
         <View style={styles.f1} />
         <View style={[styles.f1, styles.contentView]}>
-          <Text style={styles.title}>Dậy sớm</Text>
-          <UserList />
-          <Text style={styles.numPeople}>140 người chọn thói quen này</Text>
+          <Text style={styles.title}>{data.habitTitle}</Text>
+          <UserList users={data.users || []} />
+          <Text style={styles.numPeople}>
+            {t('selectThisHabit', {count: data.count})}
+          </Text>
         </View>
       </LinearGradient>
-      <FastImage style={styles.graphic} source={ONBOARDING.WEAK_UP} />
-    </>
+      <FastImage
+        style={[
+          styles.graphic,
+          isOdd ? {right: scaleSize(20)} : {left: scaleSize(20)},
+        ]}
+        source={uri}
+      />
+    </TouchableOpacity>
   );
 };
 
@@ -43,7 +76,6 @@ const styles = StyleSheet.create({
     height: scaleSize(138),
     position: 'absolute',
     bottom: 0,
-    left: scaleSize(20),
   },
   f1: {
     flex: 1,
@@ -59,5 +91,6 @@ const styles = StyleSheet.create({
   },
   contentView: {
     paddingVertical: scaleSize(16),
+    paddingHorizontal: scaleSize(32),
   },
 });
