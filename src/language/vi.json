@@ -35,7 +35,11 @@
     "agreeWith":"Tôi đồng ý với {{text}}",
     "termsConditions":"Điều khoản sử dụng",
     "passwordMustHave":"Mật khẩu phải có ít nhất:",
-    "createPassword":"Tạo mật khẩu"
+    "createPassword":"Tạo mật khẩu",
+    "personalInformation":"Thông tin cá nhân",
+    "username":"Tên hiển thị"
+
+
 
 
 }

@@ -38,8 +38,7 @@
     "haveNumber":"Ký tự số",
     "haveLowercase":"Ký tự thường",
     "haveUppercase":"Ký tự hoa",
-    "createPassword":"Tạo mật khẩu"
-
-
-
+    "createPassword":"Tạo mật khẩu",
+    "personalInformation":"Thông tin cá nhân",
+    "username":"Tên hiển thị"
 }

@@ -21,6 +21,8 @@ export const ONBOARDING = {
 
   CONCENTRATE: require('../graphics/onboarding/focus.png'),
   DRAW: require('../graphics/onboarding/draw.png'),
+
+  AVATAR_DEFAULT: require('../graphics/onboarding/avatar_default.png'),
 } as const;
 
 // [

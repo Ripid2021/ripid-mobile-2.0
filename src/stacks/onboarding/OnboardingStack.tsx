@@ -3,6 +3,8 @@ import React from 'react';
 import HeaderBack from '~/custom-libs/HeaderBack';
 import CreatePassword from '~/stacks/onboarding/screens/CreatePassword';
 import HabitSetting from '~/stacks/onboarding/screens/HabitSetting';
+import OnboardingSuccess from '~/stacks/onboarding/screens/OnboardingSuccess';
+import PersonalInformation from '~/stacks/onboarding/screens/PersonalInformation';
 import Register from '~/stacks/onboarding/screens/Register';
 import SelectHabit from '~/stacks/onboarding/screens/SelectHabit';
 import VerifyOTP from '~/stacks/onboarding/screens/VerifyOTP';
@@ -64,6 +66,16 @@ export const OnboardingScreens = [
     options: {headerShown: false},
     name: 'CreatePassword',
     component: CreatePassword,
+  },
+  {
+    options: {headerShown: false},
+    name: 'PersonalInformation',
+    component: PersonalInformation,
+  },
+  {
+    options: {headerShown: false},
+    name: 'OnboardingSuccess',
+    component: OnboardingSuccess,
   },
 ] as const;
 

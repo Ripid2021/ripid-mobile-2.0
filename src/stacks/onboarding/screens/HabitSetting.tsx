@@ -7,7 +7,7 @@ import {t} from 'i18next';
 import Text from '~/common/Text';
 import {bodyText, borderCard, headlineText} from '~/theme/style';
 import TextInput from '~/common/TextInput';
-import {BROWN, WHITE, YELLOW} from '~/theme/color';
+import {BROWN, WHITE} from '~/theme/color';
 import {bottomPadding, scaleSize} from '~/theme/size';
 import Divider from '~/common/Divider';
 import TimePicker from '~/common/TimePicker';

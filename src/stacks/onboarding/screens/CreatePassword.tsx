@@ -20,7 +20,7 @@ const CreatePassword = () => {
 
   const _handleContinue = useCallback(() => {
     navigation.navigate('OnboardingStack', {
-      screen: 'Register',
+      screen: 'PersonalInformation',
     });
   }, [navigation]);
 
