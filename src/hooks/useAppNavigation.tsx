@@ -8,6 +8,8 @@ import {
   useRoute,
   NavigationProp,
 } from '@react-navigation/native';
+import {WebViewSource} from 'react-native-webview/lib/WebViewTypes';
+import {AppScreens} from '~/stacks/app/AppStack';
 import {AuthScreens} from '~/stacks/auth/AuthStack';
 import {OnboardingScreens} from '~/stacks/onboarding/OnboardingStack';
 
@@ -32,6 +34,15 @@ export type RootStackParamList = {
   AuthStack: {
     screen: (typeof AuthScreens)[number]['name'];
     params?: RootStackParamList[(typeof AuthScreens)[number]['name']];
+  };
+
+  WebView: {
+    source: WebViewSource;
+    title: string;
+  };
+  AppStack: {
+    screen: (typeof AppScreens)[number]['name'];
+    params?: RootStackParamList[(typeof AppScreens)[number]['name']];
   };
 };
 

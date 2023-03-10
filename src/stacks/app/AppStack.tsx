@@ -1,14 +1,16 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import Profile from './screens/Profile';
 import HeaderBack from '~/custom-libs/HeaderBack';
 import {centerHeaderTitle} from '~/theme/style';
 import {TRANSPARENT} from '~/theme/color';
+import WebView from '~/stacks/app/screens/WebView';
+import {TScreen} from '~/type';
+import {t} from 'i18next';
 
-const ProfileStackNavigator = createStackNavigator();
-const ProfileStack = () => {
+const AppStackNavigator = createStackNavigator();
+const AppStack = () => {
   return (
-    <ProfileStackNavigator.Navigator
+    <AppStackNavigator.Navigator
       screenOptions={{
         headerShown: true,
         headerTitleStyle: centerHeaderTitle,
@@ -16,23 +18,23 @@ const ProfileStack = () => {
         headerLeft: props => <HeaderBack {...props} />,
       }}
       initialRouteName="Profile">
-      {ProfileScreens.map(item => (
-        <ProfileStackNavigator.Screen
+      {AppScreens.map(item => (
+        <AppStackNavigator.Screen
           key={item.name}
           options={item.options}
           name={item.name}
           component={item.component}
         />
       ))}
-    </ProfileStackNavigator.Navigator>
+    </AppStackNavigator.Navigator>
   );
 };
 
-export const ProfileScreens = [
+export const AppScreens = [
   {
-    options: {headerShown: false},
-    name: 'Profile',
-    component: Profile,
+    options: {headerShown: true},
+    name: 'WebView',
+    component: WebView,
   },
 ] as const;
-export default ProfileStack;
+export default AppStack;

@@ -34,5 +34,5 @@ export const GroupScreens = [
     name: 'Group',
     component: Group,
   },
-];
+] as const;
 export default GroupStack;
