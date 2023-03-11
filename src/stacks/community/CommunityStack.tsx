@@ -34,5 +34,5 @@ export const CommunityScreens = [
     name: 'Community',
     component: Community,
   },
-];
+] as const;
 export default CommunityStack;

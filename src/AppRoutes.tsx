@@ -13,6 +13,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import useI18n from '~/hooks/useI18n';
 import AuthStack from '~/stacks/auth/AuthStack';
 import HomeTabNavigator from './navigation/HomeTabNavigator';
+import AppStack from '~/stacks/app/AppStack';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -68,6 +69,13 @@ const AppRoutes = () => {
             <RootStackNavigator.Screen
               name="HomeTabNavigator"
               component={HomeTabNavigator}
+              options={{
+                headerShown: false,
+              }}
+            />
+            <RootStackNavigator.Screen
+              name="AppStack"
+              component={AppStack}
               options={{
                 headerShown: false,
               }}
