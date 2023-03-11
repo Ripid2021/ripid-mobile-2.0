@@ -7,9 +7,14 @@ import {BLUE, LIGHT_GREY} from '~/theme/color';
 import {useGetHabitSummary} from '~/state/onboarding';
 import HabitItem from './HabitItem';
 import Button from '~/common/Button';
+import {useAppNavigation} from '~/hooks/useAppNavigation';
 
 const ListHabit = () => {
+  const navigation = useAppNavigation();
   const {data = []} = useGetHabitSummary({});
+  const onPressSeeAll = () => {
+    navigation.navigate('HabitCategory');
+  };
   const onPressItem = () => {
     console.log('press');
   };
@@ -20,7 +25,7 @@ const ListHabit = () => {
     <>
       <View style={styles.habitJoin}>
         <Text size={S16}>{t('habitJoin')}</Text>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={onPressSeeAll}>
           <Text style={styles.labelSeeAll}>{t('seeAll')}</Text>
         </TouchableOpacity>
       </View>

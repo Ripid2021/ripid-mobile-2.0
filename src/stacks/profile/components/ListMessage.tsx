@@ -5,6 +5,7 @@ import ContactCard from './ContactCard';
 import {BLUE, LIGHT_BLUE_1, WHITE} from '~/theme/color';
 import {S16, S24, S8, scaleSize} from '~/theme/size';
 import {t} from 'i18next';
+import {useAppNavigation} from '~/hooks/useAppNavigation';
 
 const data = [
   {
@@ -38,6 +39,10 @@ const data = [
 ];
 
 const ListMessage = () => {
+  const navigation = useAppNavigation();
+  const onPressSeeAll = () => {
+    navigation.navigate('MessageGroup');
+  };
   return (
     <>
       <View style={styles.labelContainer}>
@@ -51,7 +56,7 @@ const ListMessage = () => {
           <ContactCard data={item} showTimeActive />
         </View>
       ))}
-      <TouchableOpacity>
+      <TouchableOpacity onPress={onPressSeeAll}>
         <Text style={styles.labelSeeAll}>{t('seeAll')}</Text>
       </TouchableOpacity>
     </>

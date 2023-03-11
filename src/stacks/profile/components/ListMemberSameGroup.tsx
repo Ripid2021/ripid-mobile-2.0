@@ -7,6 +7,7 @@ import {
   View,
 } from 'react-native';
 import Text from '~/common/Text';
+import {useAppNavigation} from '~/hooks/useAppNavigation';
 import {BLUE, LIGHT_BLUE_1, WHITE} from '~/theme/color';
 import {S16, S24, S8, scaleSize} from '~/theme/size';
 import ContactCard from './ContactCard';
@@ -19,10 +20,10 @@ export type TContactCardItemProps = {
   avatar: ImageSourcePropType | string;
 };
 
-const data = [
+export const FAKE_DATA_MEMBER = [
   {
     id: 1,
-    name: 'Phạm Nguyễn Trang Anhdsaddasdsadasdassdadasdasds',
+    name: 'Phạm Nguyễn Trang Anhdsaddasdsadasdassdadasdasdsdasdasdasdasdasdasdsdad sdasds sdasdas',
     groupname: 'Nhóm chạy bộ',
     isAdmire: false,
     avatar: 'https://randomuser.me/api/portraits/men/36.jpg',
@@ -51,20 +52,24 @@ const data = [
 ];
 
 const ListMemberSameGroup = () => {
+  const navigation = useAppNavigation();
+  const onPressSeeAll = () => {
+    navigation.navigate('MemberSameGroup');
+  };
   return (
     <>
       <View style={styles.labelContainer}>
         <Text style={styles.label}>{t('memberSameGroup')}</Text>
         <View style={styles.number}>
-          <Text color={WHITE}>{data.length}</Text>
+          <Text color={WHITE}>{FAKE_DATA_MEMBER.length}</Text>
         </View>
       </View>
-      {data.slice(0, 3).map((item, index: number) => (
+      {FAKE_DATA_MEMBER.slice(0, 3).map((item, index: number) => (
         <View key={index} style={styles.item}>
           <ContactCard data={item} showAdmire />
         </View>
       ))}
-      <TouchableOpacity>
+      <TouchableOpacity onPress={onPressSeeAll}>
         <Text style={styles.labelSeeAll}>{t('seeAll')}</Text>
       </TouchableOpacity>
     </>

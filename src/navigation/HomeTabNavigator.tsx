@@ -1,4 +1,5 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {getFocusedRouteNameFromRoute} from '@react-navigation/native';
 import {t} from 'i18next';
 import React from 'react';
 import {Platform, Pressable, StyleSheet} from 'react-native';
@@ -28,9 +29,20 @@ const HomeTabNavigator = () => {
   return (
     <BottomTab.Navigator
       initialRouteName="ProfileStack"
-      screenOptions={{
-        tabBarActiveTintColor: null,
-        tabBarStyle: styles.barItemContainer,
+      screenOptions={props => {
+        console.log(getFocusedRouteNameFromRoute(props.route));
+        return {
+          tabBarActiveTintColor: null,
+          tabBarStyle: [
+            styles.barItemContainer,
+            // {
+            //   display:
+            //     getFocusedRouteNameFromRoute(props.route) !== undefined
+            //       ? 'none'
+            //       : 'flex',
+            // },
+          ],
+        };
       }}>
       <BottomTab.Screen
         name={'CommunityStack'}
