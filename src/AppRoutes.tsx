@@ -14,6 +14,9 @@ import useI18n from '~/hooks/useI18n';
 import AuthStack from '~/stacks/auth/AuthStack';
 import HomeTabNavigator from './navigation/HomeTabNavigator';
 import AppStack from '~/stacks/app/AppStack';
+import ProfileStack from './stacks/profile/ProfileStack';
+import Profile from './stacks/profile/screens/Profile';
+import MessageGroup from './stacks/profile/screens/MessageGroup';
 
 const queryClient = new QueryClient({
   defaultOptions: {

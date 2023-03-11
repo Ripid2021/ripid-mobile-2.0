@@ -44,6 +44,10 @@ export type RootStackParamList = {
     screen: (typeof AppScreens)[number]['name'];
     params?: RootStackParamList[(typeof AppScreens)[number]['name']];
   };
+  Profile: undefined;
+  MemberSameGroup: undefined;
+  MessageGroup: undefined;
+  HabitCategory: undefined;
 };
 
 export const useAppNavigation = () => {

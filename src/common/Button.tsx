@@ -3,6 +3,7 @@ import {
   StyleSheet,
   TextStyle,
   TouchableOpacity,
+  TouchableWithoutFeedbackProps,
   ViewStyle,
 } from 'react-native';
 import React, {useMemo} from 'react';
@@ -18,6 +19,7 @@ type TProps = {
   backgroundColor?: string;
   borderRadius?: number;
   style?: ViewStyle;
+  children?: any;
 };
 
 const Button = ({
@@ -27,6 +29,7 @@ const Button = ({
   borderRadius = scaleSize(28),
   color,
   style,
+  children,
 }: TProps) => {
   const combinedStyle = useMemo<StyleProp<TextStyle>>(() => {
     return {
@@ -39,6 +42,7 @@ const Button = ({
   return (
     <TouchableOpacity style={combinedStyle} onPress={onPress}>
       <Text style={[styles.title, color ? {color} : {}]}>{title}</Text>
+      {children}
     </TouchableOpacity>
   );
 };
@@ -49,7 +53,6 @@ const styles = StyleSheet.create({
   base: {
     paddingVertical: scaleSize(16),
     paddingHorizontal: scaleSize(24),
-
     backgroundColor: YELLOW_2,
     borderRadius: scaleSize(28),
     justifyContent: 'center',
