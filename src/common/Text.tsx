@@ -5,11 +5,14 @@ import {BROWN} from '~/theme/color';
 
 type TProps = TextProps & {
   color?: string;
+  size?: number;
 };
 
-const Text = ({color = BROWN, ...props}: TProps) => {
+const Text = ({color = BROWN, size, ...props}: TProps) => {
   return (
-    <Base {...props} style={[styles.base, {color}, props.style]}>
+    <Base
+      {...props}
+      style={[styles.base, {color, fontSize: size}, props.style]}>
       {props.children}
     </Base>
   );

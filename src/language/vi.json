@@ -37,9 +37,21 @@
     "passwordMustHave":"Mật khẩu phải có ít nhất:",
     "createPassword":"Tạo mật khẩu",
     "personalInformation":"Thông tin cá nhân",
-    "username":"Tên hiển thị"
+    "username":"Tên hiển thị",
 
-
+    "admire" : "Ngưỡng mộ",
+    "admired": "Được ngưỡng mộ",
+    "ripid": "Ripid",
+    "habitJoin":"Thói quen đang tham gia",
+    "seeAll":"Xem tất cả",
+    "suggestNewHabit":"Đề xuất thói quen mới",
+    "link": "Liên kết",
+    "memberSameGroup": "Thành viên có nhóm chung",
+    "personalMessageBox":"Hộp thư thông điệp cá nhân",
+    "infoRipid": "Thông tin về cộng đồng Ripid",
+    "feedbackToRipid":"Góp ý để Ripid trở thành cộng đồng tốt hơn mỗi ngày",
+    "donate": "Đóng góp",
+    "feedback":"Gửi góp ý"
 
 
 }

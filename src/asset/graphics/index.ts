@@ -61,3 +61,14 @@ export const BOTTOM_TAB = {
   COMMUNITY: require('../graphics/bottomTab/community.png'),
   COMMUNITY_SELECTED: require('../graphics/bottomTab/community_selected.png'),
 };
+
+export const PROFILE = {
+  EDIT: require('../graphics/profile/edit.png'),
+  NOTIFICATION: require('../graphics/profile/notification.png'),
+  SETTING: require('../graphics/profile/setting.png'),
+};
+
+export const SOCIAL = {
+  instagram: require('../graphics/profile/instagram.png'),
+  mail: require('../graphics/profile/mail.png'),
+};

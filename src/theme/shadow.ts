@@ -4,19 +4,19 @@ export const shadow = Platform.select({
   ios: {
     shadowColor: '#000',
     shadowOffset: {
-      width: 0,
-      height: 2,
+      width: 1,
+      height: 1,
     },
-    shadowOpacity: 0.43,
-    shadowRadius: 5,
+    shadowOpacity: 0.1,
+    shadowRadius: 2,
   },
   android: {
     shadowColor: '#000',
     shadowOffset: {
-      width: 0,
-      height: 2,
+      width: 1,
+      height: 1,
     },
-    shadowOpacity: 0.43,
-    shadowRadius: 5,
+    shadowOpacity: 0.1,
+    shadowRadius: 2,
   },
 });
