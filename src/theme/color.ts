@@ -25,6 +25,9 @@ export const ORANGE_1 = '#FFA011';
 export const BLUE_1 = '#5379FF';
 export const LIGHT_BLUE_1 = '#B0ECFF';
 export const GREEN = '#20C144';
+export const GREEN_1 = '#B0FAC0';
+export const GREEN_2 = '#E4FFEA';
+
 export const RED = '#FF0000';
 
 export const BLUE_GRADIENT = ['#5379FF', '#AEBDF5'];

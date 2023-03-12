@@ -52,7 +52,7 @@ const AppRoutes = () => {
         <NavigationContainer ref={navigationRef} linking={linking}>
           <RootStackNavigator.Navigator
             screenOptions={{headerShown: false}}
-            initialRouteName="BottomTabStack">
+            initialRouteName="OnboardingStack">
             <RootStackNavigator.Screen
               name="OnboardingStack"
               component={OnboardingStack}
