@@ -1,27 +1,70 @@
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import React from 'react';
+import {Platform, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import React, {useCallback, useMemo} from 'react';
 import {scaleSize} from '~/theme/size';
 import {BLACK, BODY_TEXT, LIGHT_GREY, WHITE} from '~/theme/color';
 import FastImage from 'react-native-fast-image';
 import {AUTH} from '~/asset/graphics';
 import {t} from 'i18next';
-
-export const LOGIN_SOCIAL = [
-  {
-    label: 'Google',
-    source: AUTH.GOOGLE,
-  },
-  {
-    label: 'Facebook',
-    source: AUTH.FACEBOOK,
-  },
-  {
-    label: 'Apple',
-    source: AUTH.APPLE,
-  },
-];
+import {AccessToken, LoginManager} from 'react-native-fbsdk-next';
+import {useMetaLogin} from '~/state/auth';
+import {setAuth} from '~/state/auth/reducer';
+import {useAppDispatch} from '~/hooks/useAppSelector';
+import {endLoading, startLoading} from '~/state/global/reducer';
 
 const SSO = () => {
+  const dispatch = useAppDispatch();
+  const {mutate: metaLoginFn} = useMetaLogin({
+    onSuccess: data => {
+      console.log({data});
+
+      dispatch(setAuth(data));
+    },
+    onMutate: () => {
+      dispatch(startLoading());
+    },
+    onSettled: () => {
+      dispatch(endLoading());
+    },
+  });
+  const _metaSignIn = useCallback(async () => {
+    if (Platform.OS === 'android') LoginManager.setLoginBehavior('web_only');
+
+    await LoginManager.logInWithPermissions(
+      ['public_profile', 'email'],
+      'enabled',
+      'nonceIos',
+    ).then(
+      res => res,
+      err => err,
+    );
+    const accessToken = await AccessToken.getCurrentAccessToken().then(
+      res => res?.accessToken,
+    );
+
+    if (accessToken) metaLoginFn({token: accessToken});
+    throw new Error('NO TOKEN');
+  }, [metaLoginFn]);
+
+  const LOGIN_SOCIAL = useMemo(
+    () => [
+      {
+        label: 'Google',
+        source: AUTH.GOOGLE,
+        handler: () => {},
+      },
+      {
+        label: 'Facebook',
+        source: AUTH.FACEBOOK,
+        handler: _metaSignIn,
+      },
+      {
+        label: 'Apple',
+        source: AUTH.APPLE,
+        handler: () => {},
+      },
+    ],
+    [_metaSignIn],
+  );
   return (
     <>
       <View style={styles.socialView}>
@@ -31,7 +74,10 @@ const SSO = () => {
       </View>
       <View style={styles.socialWrapper}>
         {LOGIN_SOCIAL.map(item => (
-          <TouchableOpacity style={styles.socialItem} key={item.label}>
+          <TouchableOpacity
+            onPress={item.handler}
+            style={styles.socialItem}
+            key={item.label}>
             <FastImage style={styles.socialIcon} source={item.source} />
             <Text style={styles.socialLabel}>{item.label}</Text>
           </TouchableOpacity>

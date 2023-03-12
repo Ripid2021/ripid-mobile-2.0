@@ -23,6 +23,10 @@ export const setAuth = createAction('AUTH/SET_AUTH', (auth: TAuth) => ({
   },
 }));
 
+export const clearAuth = createAction('AUTH/SET_AUTH', () => ({
+  payload: undefined,
+}));
+
 export const auth = createSlice({
   name: 'auth',
   initialState,

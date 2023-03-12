@@ -22,7 +22,7 @@ const authStoreConfig = {
   key: 'auth',
   storage: AsyncStorage,
   version: VERSION,
-  blacklist: ['auth', 'lang'],
+  whitelist: ['auth', 'lang'],
 };
 
 export const store = configureStore({

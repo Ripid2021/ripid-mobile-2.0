@@ -10,3 +10,7 @@ export type TAuth = {
   isFirstLogin: string;
   id: string;
 };
+
+export type SSODto = {
+  token: string;
+};
