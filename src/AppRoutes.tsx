@@ -47,6 +47,8 @@ const AppRoutes = () => {
 
   useI18n();
   useAccessToken();
+  console.log({accessToken});
+
   return (
     <SafeAreaProvider>
       <QueryClientProvider client={queryClient}>
@@ -59,7 +61,7 @@ const AppRoutes = () => {
           <RootStackNavigator.Navigator
             screenOptions={{headerShown: false}}
             initialRouteName="OnboardingStack">
-            {accessToken ? (
+            {!accessToken ? (
               <>
                 <RootStackNavigator.Screen
                   name="OnboardingStack"

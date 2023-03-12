@@ -27,7 +27,7 @@ const Login = () => {
   });
   const {mutate: loginFn} = useLogin({
     onSuccess: data => {
-      setAuth(data);
+      dispatch(setAuth(data));
     },
     onMutate: () => {
       dispatch(startLoading());

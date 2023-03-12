@@ -1,9 +1,9 @@
 import {configureStore} from '@reduxjs/toolkit';
 import authReducer, {TInitialAuthState} from './auth/reducer';
 import globalReducer from './global/reducer';
+import '~/config/reactron';
+import Reactotron from 'reactotron-react-native';
 
-// import Reactotron from 'reactotron-react-native';
-// import './ReactotronConfig';
 import {
   persistStore,
   persistReducer,
@@ -42,7 +42,8 @@ export const store = configureStore({
       // },
       serializableCheck: false,
     }),
-  // enhancers: __DEV__ ? [Reactotron.createEnhancer] : [],
+  enhancers:
+    __DEV__ && Reactotron.createEnhancer ? [Reactotron.createEnhancer()] : [],
 });
 
 export const persistor = persistStore(store);
