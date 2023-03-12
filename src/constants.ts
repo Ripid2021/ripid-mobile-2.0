@@ -32,3 +32,15 @@ export const ONBOARDING_PROGRESS: TProgress[] = [
     key: 'profile',
   },
 ];
+
+export const FORGOT_PASSWORD_PROGRESS: TProgress[] = [
+  {
+    key: 'typeEmail',
+  },
+  {
+    key: 'verify',
+  },
+  {
+    key: 'complete',
+  },
+];

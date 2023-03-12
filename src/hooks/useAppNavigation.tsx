@@ -51,6 +51,8 @@ export type RootStackParamList = {
   HabitCategory: undefined;
   Community: undefined;
   Group: undefined;
+  ForgotOTP: undefined;
+  CompleteForgotPassword: undefined;
 
   BottomTabStack: {
     screen: 'Profile' | 'Group' | 'Community';

@@ -1,8 +1,9 @@
 import {createStackNavigator} from '@react-navigation/stack';
 import React from 'react';
 import HeaderBack from '~/custom-libs/HeaderBack';
+import CompleteForgotPassword from '~/stacks/auth/screens/CompleteForgotPassword';
+import ForgotOTP from '~/stacks/auth/screens/ForgotOTP';
 import ForgotPassword from '~/stacks/auth/screens/ForgotPassword';
-import SignUp from '~/stacks/auth/screens/SignUp';
 import {TRANSPARENT} from '~/theme/color';
 import {centerHeaderTitle} from '~/theme/style';
 import Login from './screens/Login';
@@ -38,14 +39,19 @@ export const AuthScreens = [
     component: Login,
   },
   {
-    options: {headerShown: true},
-    name: 'SignUp',
-    component: SignUp,
-  },
-  {
-    options: {headerShown: true},
+    options: {headerShown: false},
     name: 'ForgotPassword',
     component: ForgotPassword,
+  },
+  {
+    options: {headerShown: false},
+    name: 'ForgotOTP',
+    component: ForgotOTP,
+  },
+  {
+    options: {headerShown: false},
+    name: 'CompleteForgotPassword',
+    component: CompleteForgotPassword,
   },
 ] as const;
 

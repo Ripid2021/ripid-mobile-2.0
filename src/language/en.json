@@ -60,5 +60,7 @@
     "mail":"Hộp thư",
     "onboardingSuccessTitle":"Tạo tài khoản thành công",
     "onboardingSuccessContent":"Bạn đã tạo tài khoản thành công. Hãy bắt đầu tham gia cộng đồng Ripid nhé!",
-    "complete":"Hoàn tất"
+    "complete":"Hoàn tất",
+    "typeEmail":"Nhập email"
+
 }

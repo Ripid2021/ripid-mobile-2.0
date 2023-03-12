@@ -16,8 +16,8 @@ import SSO from '~/stacks/auth/components/SSO';
 const Login = () => {
   const navigation = useAppNavigation();
   const _handleSignUp = useCallback(() => {
-    navigation.navigate('AuthStack', {
-      screen: 'SignUp',
+    navigation.navigate('OnboardingStack', {
+      screen: 'Welcome',
     });
   }, [navigation]);
   const _handleForgot = useCallback(() => {
