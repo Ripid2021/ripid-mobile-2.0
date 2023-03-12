@@ -15,6 +15,7 @@ import AuthStack from '~/stacks/auth/AuthStack';
 import AppStack from '~/stacks/app/AppStack';
 import ProfileStack from './stacks/profile/ProfileStack';
 import BottomTabStack from '~/stacks/bottom-tab/BottomTabStack';
+import {useAppSelector} from '~/hooks/useAppSelector';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -37,6 +38,9 @@ const linking: LinkingOptions<RootStackParamList> = {
 const RootStackNavigator = createStackNavigator();
 
 const AppRoutes = () => {
+  const accessToken = useAppSelector(
+    state => state.authReducer?.auth?.accessToken,
+  );
   const navigationRef =
     useRef<NavigationContainerRef<RootStackParamList>>(null);
 
@@ -53,41 +57,48 @@ const AppRoutes = () => {
           <RootStackNavigator.Navigator
             screenOptions={{headerShown: false}}
             initialRouteName="OnboardingStack">
-            <RootStackNavigator.Screen
-              name="OnboardingStack"
-              component={OnboardingStack}
-              options={{
-                headerShown: false,
-              }}
-            />
-            <RootStackNavigator.Screen
-              name="AuthStack"
-              component={AuthStack}
-              options={{
-                headerShown: false,
-              }}
-            />
-            <RootStackNavigator.Screen
-              name="BottomTabStack"
-              component={BottomTabStack}
-              options={{
-                headerShown: false,
-              }}
-            />
-            <RootStackNavigator.Screen
-              name="AppStack"
-              component={AppStack}
-              options={{
-                headerShown: false,
-              }}
-            />
-            <RootStackNavigator.Screen
-              name="ProfileStack"
-              component={ProfileStack}
-              options={{
-                headerShown: false,
-              }}
-            />
+            {accessToken ? (
+              <>
+                <RootStackNavigator.Screen
+                  name="OnboardingStack"
+                  component={OnboardingStack}
+                  options={{
+                    headerShown: false,
+                  }}
+                />
+                <RootStackNavigator.Screen
+                  name="AuthStack"
+                  component={AuthStack}
+                  options={{
+                    headerShown: false,
+                  }}
+                />
+              </>
+            ) : (
+              <>
+                <RootStackNavigator.Screen
+                  name="BottomTabStack"
+                  component={BottomTabStack}
+                  options={{
+                    headerShown: false,
+                  }}
+                />
+                <RootStackNavigator.Screen
+                  name="AppStack"
+                  component={AppStack}
+                  options={{
+                    headerShown: false,
+                  }}
+                />
+                <RootStackNavigator.Screen
+                  name="ProfileStack"
+                  component={ProfileStack}
+                  options={{
+                    headerShown: false,
+                  }}
+                />
+              </>
+            )}
           </RootStackNavigator.Navigator>
         </NavigationContainer>
       </QueryClientProvider>

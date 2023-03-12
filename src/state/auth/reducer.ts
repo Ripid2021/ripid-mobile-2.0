@@ -1,11 +1,12 @@
 import {createAction, createSlice} from '@reduxjs/toolkit';
-import {TLang} from './type';
+import {TAuth, TLang} from './type';
 
-type TInitialState = {
+export type TInitialAuthState = {
   lang?: TLang;
+  auth?: TAuth;
 };
 
-const initialState: TInitialState = {};
+const initialState: TInitialAuthState = {};
 
 export const setLanguage = createAction(
   'AUTH/SET_LANG',
@@ -16,6 +17,12 @@ export const setLanguage = createAction(
   }),
 );
 
+export const setAuth = createAction('AUTH/SET_AUTH', (auth: TAuth) => ({
+  payload: {
+    auth,
+  },
+}));
+
 export const auth = createSlice({
   name: 'auth',
   initialState,
@@ -23,6 +30,10 @@ export const auth = createSlice({
   extraReducers: builder => {
     builder.addCase(setLanguage, (state, {payload}) => {
       state.lang = payload.lang;
+    });
+
+    builder.addCase(setAuth, (state, {payload}) => {
+      state.auth = payload.auth;
     });
   },
 });
