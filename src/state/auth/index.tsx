@@ -55,3 +55,20 @@ export const useMetaLogin: UseMetaLogin = arg => {
     },
   );
 };
+
+type UseAppleLogin = (
+  args: UseMutationOptions<TAuth, TBaseError, SSODto>,
+) => UseMutationResult<TAuth, TBaseError, SSODto>;
+export const useAppleLogin: UseAppleLogin = arg => {
+  return useMutation(
+    ['AUTH/LOGIN_APPLE'],
+    dto => {
+      return BaseAxios.post('/auth/login/apple', dto).then(
+        response => response.data,
+      );
+    },
+    {
+      ...arg,
+    },
+  );
+};

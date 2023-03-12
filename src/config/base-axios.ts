@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const BaseAxios = axios.create({
-  baseURL: 'https://staging.ripid.vn',
+  baseURL: 'http://localhost:3000',
   headers: {
     version: 'v2',
   },

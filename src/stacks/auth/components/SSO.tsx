@@ -6,14 +6,27 @@ import FastImage from 'react-native-fast-image';
 import {AUTH} from '~/asset/graphics';
 import {t} from 'i18next';
 import {AccessToken, LoginManager} from 'react-native-fbsdk-next';
-import {useMetaLogin} from '~/state/auth';
+import {useAppleLogin, useMetaLogin} from '~/state/auth';
 import {setAuth} from '~/state/auth/reducer';
 import {useAppDispatch} from '~/hooks/useAppSelector';
 import {endLoading, startLoading} from '~/state/global/reducer';
+import appleAuth from '@invertase/react-native-apple-authentication';
+import jwtDecode from 'jwt-decode';
 
 const SSO = () => {
   const dispatch = useAppDispatch();
   const {mutate: metaLoginFn} = useMetaLogin({
+    onSuccess: data => {
+      dispatch(setAuth(data));
+    },
+    onMutate: () => {
+      dispatch(startLoading());
+    },
+    onSettled: () => {
+      dispatch(endLoading());
+    },
+  });
+  const {mutate: appleLoginFn} = useAppleLogin({
     onSuccess: data => {
       console.log({data});
 
@@ -45,25 +58,59 @@ const SSO = () => {
     throw new Error('NO TOKEN');
   }, [metaLoginFn]);
 
+  const _appleSignIn = useCallback(async () => {
+    // Must read if maintain: https://github.com/invertase/react-native-apple-authentication#4-implement-the-logout-process
+    const appleAuthRequestResponse = await appleAuth.performRequest({
+      requestedOperation: appleAuth.Operation.REFRESH,
+      requestedScopes: [appleAuth.Scope.EMAIL, appleAuth.Scope.FULL_NAME],
+    });
+    // get current authentication state for user
+    // /!\ This method must be tested on a real device. On the iOS simulator it always throws an error.
+    const credentialState = await appleAuth.getCredentialStateForUser(
+      appleAuthRequestResponse.user,
+    );
+    // use credentialState response to ensure the user is authenticated
+    if (credentialState === appleAuth.State.AUTHORIZED) {
+      // user is authenticated
+    }
+    if (appleAuthRequestResponse.identityToken) {
+      const {email, sub} = jwtDecode<{email: string; sub: string}>(
+        appleAuthRequestResponse.identityToken,
+      );
+
+      appleLoginFn({
+        email,
+        idToken: appleAuthRequestResponse.identityToken,
+        userAppleId: sub,
+      });
+    }
+  }, [appleLoginFn]);
+
   const LOGIN_SOCIAL = useMemo(
-    () => [
-      {
-        label: 'Google',
-        source: AUTH.GOOGLE,
-        handler: () => {},
-      },
-      {
-        label: 'Facebook',
-        source: AUTH.FACEBOOK,
-        handler: _metaSignIn,
-      },
-      {
-        label: 'Apple',
-        source: AUTH.APPLE,
-        handler: () => {},
-      },
-    ],
-    [_metaSignIn],
+    () =>
+      [
+        {
+          label: 'Google',
+          source: AUTH.GOOGLE,
+          handler: () => {},
+        },
+        {
+          label: 'Facebook',
+          source: AUTH.FACEBOOK,
+          handler: _metaSignIn,
+        },
+      ].concat(
+        ...(Platform.OS === 'ios'
+          ? [
+              {
+                label: 'Apple',
+                source: AUTH.APPLE,
+                handler: _appleSignIn,
+              },
+            ]
+          : []),
+      ),
+    [_appleSignIn, _metaSignIn],
   );
   return (
     <>

@@ -12,5 +12,8 @@ export type TAuth = {
 };
 
 export type SSODto = {
-  token: string;
+  token?: string;
+  email?: string;
+  idToken?: string;
+  userAppleId?: string;
 };
