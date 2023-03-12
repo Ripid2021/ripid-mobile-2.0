@@ -16,6 +16,7 @@ import AppStack from '~/stacks/app/AppStack';
 import ProfileStack from './stacks/profile/ProfileStack';
 import BottomTabStack from '~/stacks/bottom-tab/BottomTabStack';
 import {useAppSelector} from '~/hooks/useAppSelector';
+import useAccessToken from '~/hooks/useAccessToken';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -45,6 +46,7 @@ const AppRoutes = () => {
     useRef<NavigationContainerRef<RootStackParamList>>(null);
 
   useI18n();
+  useAccessToken();
   return (
     <SafeAreaProvider>
       <QueryClientProvider client={queryClient}>
