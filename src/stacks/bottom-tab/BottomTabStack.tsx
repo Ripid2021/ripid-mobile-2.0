@@ -1,19 +1,21 @@
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {getFocusedRouteNameFromRoute} from '@react-navigation/native';
+import {
+  BottomTabBarButtonProps,
+  createBottomTabNavigator,
+} from '@react-navigation/bottom-tabs';
 import {t} from 'i18next';
 import React from 'react';
 import {Platform, Pressable, StyleSheet} from 'react-native';
 import FastImage from 'react-native-fast-image';
 import {BOTTOM_TAB} from '~/asset/graphics';
-import CommunityStack from '~/stacks/community/CommunityStack';
-import GroupStack from '~/stacks/group/GroupStack';
-import ProfileStack from '~/stacks/profile/ProfileStack';
+import Community from '~/stacks/bottom-tab/screens/Community';
+import Group from '~/stacks/bottom-tab/screens/Group';
+import Profile from '~/stacks/bottom-tab/screens/Profile';
 import {YELLOW} from '~/theme/color';
 import {bottomHeight, S20, scaleSize} from '~/theme/size';
 
 const BottomTab = createBottomTabNavigator();
 
-const CustomTabButton = (props: any) => (
+const CustomTabButton = (props: BottomTabBarButtonProps) => (
   <Pressable
     {...props}
     style={
@@ -24,15 +26,13 @@ const CustomTabButton = (props: any) => (
   />
 );
 
-const HomeTabNavigator = () => {
+const BottomTabStack = () => {
   // const {data: dataInfo = []} = useGetProfile({});
   return (
     <BottomTab.Navigator
       initialRouteName="ProfileStack"
-      screenOptions={props => {
-        console.log(getFocusedRouteNameFromRoute(props.route));
+      screenOptions={() => {
         return {
-          tabBarActiveTintColor: null,
           tabBarStyle: [
             styles.barItemContainer,
             // {
@@ -45,8 +45,8 @@ const HomeTabNavigator = () => {
         };
       }}>
       <BottomTab.Screen
-        name={'CommunityStack'}
-        component={CommunityStack}
+        name={'Community'}
+        component={Community}
         options={{
           title: `${t('community')}`,
           tabBarIcon: ({focused}) => {
@@ -65,8 +65,8 @@ const HomeTabNavigator = () => {
         }}
       />
       <BottomTab.Screen
-        name={'GroupStack'}
-        component={GroupStack}
+        name={'Group'}
+        component={Group}
         options={{
           title: `${t('group')}`,
           tabBarIcon: ({focused}) => {
@@ -83,8 +83,8 @@ const HomeTabNavigator = () => {
         }}
       />
       <BottomTab.Screen
-        name={'ProfileStack'}
-        component={ProfileStack}
+        name={'Profile'}
+        component={Profile}
         options={{
           title: `${t('me')}`,
           tabBarLabelStyle: styles.tabBarLabel,
@@ -122,7 +122,7 @@ const HomeTabNavigator = () => {
   );
 };
 
-export default HomeTabNavigator;
+export default BottomTabStack;
 
 const styles = StyleSheet.create({
   tabBarItemActive: {

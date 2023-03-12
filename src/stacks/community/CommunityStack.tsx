@@ -3,7 +3,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import HeaderBack from '~/custom-libs/HeaderBack';
 import {centerHeaderTitle} from '~/theme/style';
 import {TRANSPARENT} from '~/theme/color';
-import Community from './screens/Community';
+import Community from '../bottom-tab/screens/Community';
 
 const CommunityStackNavigator = createStackNavigator();
 const CommunityStack = () => {

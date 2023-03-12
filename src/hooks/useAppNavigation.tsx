@@ -12,6 +12,7 @@ import {WebViewSource} from 'react-native-webview/lib/WebViewTypes';
 import {AppScreens} from '~/stacks/app/AppStack';
 import {AuthScreens} from '~/stacks/auth/AuthStack';
 import {OnboardingScreens} from '~/stacks/onboarding/OnboardingStack';
+import {ProfileScreens} from '~/stacks/profile/ProfileStack';
 
 export type RootStackParamList = {
   Welcome: undefined;
@@ -48,6 +49,18 @@ export type RootStackParamList = {
   MemberSameGroup: undefined;
   MessageGroup: undefined;
   HabitCategory: undefined;
+  Community: undefined;
+  Group: undefined;
+
+  BottomTabStack: {
+    screen: 'Profile' | 'Group' | 'Community';
+    params?: RootStackParamList['Profile' | 'Group' | 'Community'];
+  };
+
+  ProfileStack: {
+    screen: (typeof ProfileScreens)[number]['name'];
+    params?: RootStackParamList[(typeof ProfileScreens)[number]['name']];
+  };
 };
 
 export const useAppNavigation = () => {

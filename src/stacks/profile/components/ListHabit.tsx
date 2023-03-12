@@ -13,7 +13,9 @@ const ListHabit = () => {
   const navigation = useAppNavigation();
   const {data = []} = useGetHabitSummary({});
   const onPressSeeAll = () => {
-    navigation.navigate('HabitCategory');
+    navigation.navigate('ProfileStack', {
+      screen: 'HabitCategory',
+    });
   };
   const onPressItem = () => {
     console.log('press');

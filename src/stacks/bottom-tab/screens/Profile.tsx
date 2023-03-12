@@ -13,14 +13,14 @@ import HeaderTabBar from '~/navigation/HeaderTabBar';
 import {useGetProfile, usePostFeedback} from '~/state/profile';
 import {LIGHT_GREY} from '~/theme/color';
 import {S24, scaleSize, SPACING} from '~/theme/size';
-import BIO from '../components/BIO';
-import Contact from '../components/Contact';
-import ContactRipid from '../components/ContactRipid';
-import FeedBack from '../components/FeedBack';
-import ListHabit from '../components/ListHabit';
-import ListMemberSameGroup from '../components/ListMemberSameGroup';
-import ListMessage from '../components/ListMessage';
-import SSOInfo from '../components/SSOInfo';
+import BIO from '../../profile/components/BIO';
+import Contact from '../../profile/components/Contact';
+import ContactRipid from '../../profile/components/ContactRipid';
+import FeedBack from '../../profile/components/FeedBack';
+import ListHabit from '../../profile/components/ListHabit';
+import ListMemberSameGroup from '../../profile/components/ListMemberSameGroup';
+import ListMessage from '../../profile/components/ListMessage';
+import SSOInfo from '../../profile/components/SSOInfo';
 
 const Profile = () => {
   const navigation = useAppNavigation();

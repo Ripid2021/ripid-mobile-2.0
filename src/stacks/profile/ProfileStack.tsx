@@ -7,7 +7,7 @@ import {centerHeaderTitle} from '~/theme/style';
 import HabitCategory from './screens/HabitCategory';
 import MemberSameGroup from './screens/MemberSameGroup';
 import MessageGroup from './screens/MessageGroup';
-import Profile from './screens/Profile';
+import Profile from '../bottom-tab/screens/Profile';
 
 const ProfileStackNavigator = createStackNavigator();
 const ProfileStack = () => {
@@ -33,11 +33,6 @@ const ProfileStack = () => {
 };
 
 export const ProfileScreens = [
-  {
-    options: {headerShown: false},
-    name: 'Profile',
-    component: Profile,
-  },
   {
     options: () => ({
       headerShown: true,

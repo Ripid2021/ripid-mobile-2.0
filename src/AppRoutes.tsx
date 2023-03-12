@@ -12,11 +12,9 @@ import OnboardingStack from '~/stacks/onboarding/OnboardingStack';
 import {createStackNavigator} from '@react-navigation/stack';
 import useI18n from '~/hooks/useI18n';
 import AuthStack from '~/stacks/auth/AuthStack';
-import HomeTabNavigator from './navigation/HomeTabNavigator';
 import AppStack from '~/stacks/app/AppStack';
 import ProfileStack from './stacks/profile/ProfileStack';
-import Profile from './stacks/profile/screens/Profile';
-import MessageGroup from './stacks/profile/screens/MessageGroup';
+import BottomTabStack from '~/stacks/bottom-tab/BottomTabStack';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -54,7 +52,7 @@ const AppRoutes = () => {
         <NavigationContainer ref={navigationRef} linking={linking}>
           <RootStackNavigator.Navigator
             screenOptions={{headerShown: false}}
-            initialRouteName="OnboardingStack">
+            initialRouteName="BottomTabStack">
             <RootStackNavigator.Screen
               name="OnboardingStack"
               component={OnboardingStack}
@@ -70,8 +68,8 @@ const AppRoutes = () => {
               }}
             />
             <RootStackNavigator.Screen
-              name="HomeTabNavigator"
-              component={HomeTabNavigator}
+              name="BottomTabStack"
+              component={BottomTabStack}
               options={{
                 headerShown: false,
               }}
@@ -79,6 +77,13 @@ const AppRoutes = () => {
             <RootStackNavigator.Screen
               name="AppStack"
               component={AppStack}
+              options={{
+                headerShown: false,
+              }}
+            />
+            <RootStackNavigator.Screen
+              name="ProfileStack"
+              component={ProfileStack}
               options={{
                 headerShown: false,
               }}
