@@ -7,10 +7,11 @@ import React from 'react';
 import {Platform, Pressable, StyleSheet} from 'react-native';
 import FastImage from 'react-native-fast-image';
 import {BOTTOM_TAB} from '~/asset/graphics';
+import Text from '~/common/Text';
 import Community from '~/stacks/bottom-tab/screens/Community';
 import Group from '~/stacks/bottom-tab/screens/Group';
 import Profile from '~/stacks/bottom-tab/screens/Profile';
-import {YELLOW} from '~/theme/color';
+import {BLACK, LIGHT_GREY, YELLOW} from '~/theme/color';
 import {bottomHeight, S20, scaleSize} from '~/theme/size';
 
 const BottomTab = createBottomTabNavigator();
@@ -25,30 +26,18 @@ const CustomTabButton = (props: BottomTabBarButtonProps) => (
     }
   />
 );
-
 const BottomTabStack = () => {
   // const {data: dataInfo = []} = useGetProfile({});
   return (
     <BottomTab.Navigator
       initialRouteName="ProfileStack"
-      screenOptions={() => {
-        return {
-          tabBarStyle: [
-            styles.barItemContainer,
-            // {
-            //   display:
-            //     getFocusedRouteNameFromRoute(props.route) !== undefined
-            //       ? 'none'
-            //       : 'flex',
-            // },
-          ],
-        };
+      screenOptions={{
+        tabBarStyle: styles.barItemContainer,
       }}>
       <BottomTab.Screen
         name={'Community'}
         component={Community}
         options={{
-          title: `${t('community')}`,
           tabBarIcon: ({focused}) => {
             return (
               <FastImage
@@ -61,14 +50,17 @@ const BottomTabStack = () => {
           },
           tabBarButton: CustomTabButton,
           headerShown: false,
-          tabBarLabelStyle: styles.tabBarLabel,
+          tabBarLabel: ({focused}) => (
+            <Text style={focused ? styles.active : styles.inactive}>
+              {`${t('community')}`}
+            </Text>
+          ),
         }}
       />
       <BottomTab.Screen
         name={'Group'}
         component={Group}
         options={{
-          title: `${t('group')}`,
           tabBarIcon: ({focused}) => {
             return (
               <FastImage
@@ -79,15 +71,22 @@ const BottomTabStack = () => {
           },
           headerShown: false,
           tabBarButton: CustomTabButton,
-          tabBarLabelStyle: styles.tabBarLabel,
+          tabBarLabel: ({focused}) => (
+            <Text style={focused ? styles.active : styles.inactive}>
+              {`${t('group')}`}
+            </Text>
+          ),
         }}
       />
       <BottomTab.Screen
         name={'Profile'}
         component={Profile}
         options={{
-          title: `${t('me')}`,
-          tabBarLabelStyle: styles.tabBarLabel,
+          tabBarLabel: ({focused}) => (
+            <Text style={focused ? styles.active : styles.inactive}>
+              {`${t('me')}`}
+            </Text>
+          ),
           headerShown: false,
           // tabBarIcon: ({focused}) => (
           //   <>
@@ -136,12 +135,15 @@ const styles = StyleSheet.create({
       ios: scaleSize(80),
     }),
   },
-  tabBarLabel: {
-    fontSize: scaleSize(13),
-  },
   icon: {
     width: S20,
     height: S20,
     resizeMode: 'contain',
+  },
+  active: {
+    color: BLACK,
+  },
+  inactive: {
+    color: LIGHT_GREY,
   },
 });
