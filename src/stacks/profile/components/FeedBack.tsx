@@ -39,6 +39,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     padding: SPACING,
     borderRadius: scaleSize(12),
+    marginHorizontal: SPACING,
   },
   label: {
     textAlign: 'center',

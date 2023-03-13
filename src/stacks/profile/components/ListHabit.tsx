@@ -2,7 +2,7 @@ import {FlatList, StyleSheet, TouchableOpacity, View} from 'react-native';
 import React from 'react';
 import Text from '~/common/Text';
 import {t} from 'i18next';
-import {S16, scaleSize} from '~/theme/size';
+import {S16, scaleSize, SPACING} from '~/theme/size';
 import {BLUE, LIGHT_GREY} from '~/theme/color';
 import {useGetHabitSummary} from '~/state/onboarding';
 import HabitItem from './HabitItem';
@@ -38,7 +38,12 @@ const ListHabit = () => {
         showsHorizontalScrollIndicator={false}
         keyExtractor={item => item.habitKey}
         renderItem={({item, index}) => (
-          <HabitItem index={index} item={item} onPress={onPressItem} />
+          <View
+            style={{
+              paddingLeft: index === 0 && S16,
+            }}>
+            <HabitItem index={index} item={item} onPress={onPressItem} />
+          </View>
         )}
       />
       <Button
@@ -59,6 +64,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+    paddingHorizontal: SPACING,
   },
   labelSeeAll: {
     fontSize: S16,
@@ -69,6 +75,7 @@ const styles = StyleSheet.create({
     borderColor: LIGHT_GREY,
     height: scaleSize(48),
     paddingVertical: 0,
+    marginHorizontal: SPACING,
   },
   iconButton: {
     position: 'absolute',

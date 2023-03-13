@@ -2,7 +2,7 @@ import React from 'react';
 import {Image, StyleSheet, TouchableOpacity, View} from 'react-native';
 import {PROFILE} from '~/asset/graphics';
 import Text from '~/common/Text';
-import {S24, S32, scaleSize} from '~/theme/size';
+import {S24, S32, scaleSize, SPACING} from '~/theme/size';
 
 type TBIOProps = {
   bio: string;
@@ -30,6 +30,7 @@ export default BIO;
 const styles = StyleSheet.create({
   container: {
     paddingTop: S24,
+    paddingHorizontal: SPACING,
   },
   labelContainer: {
     flexDirection: 'row',

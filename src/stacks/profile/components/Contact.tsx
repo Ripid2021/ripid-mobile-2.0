@@ -1,11 +1,17 @@
 import {Avatar} from '@rneui/themed';
 import {t} from 'i18next';
-import React, {Fragment, useMemo, useState} from 'react';
+import React, {
+  Fragment,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
 import {ImageSourcePropType, StyleSheet, View} from 'react-native';
 import {ONBOARDING} from '~/asset/graphics';
 import Text from '~/common/Text';
 import {LIGHT_GREY} from '~/theme/color';
-import {S20, S24, scaleSize} from '~/theme/size';
+import {S20, S24, scaleSize, SPACING} from '~/theme/size';
 type TContactProps = {
   avatar?: ImageSourcePropType | string;
   admire: number;
@@ -16,14 +22,11 @@ type TStateProps = {
   path?: string;
   source?: string;
 };
-const Contact = ({
-  admire,
-  admired,
-  ripid,
-  avatar = ONBOARDING.AVATAR_DEFAULT,
-}: TContactProps) => {
+const Contact = ({admire, admired, ripid, avatar}: TContactProps) => {
   const [state, setState] = useState<TStateProps>(avatar || {});
-
+  useEffect(() => {
+    setState(avatar);
+  }, [avatar]);
   const listPoint = useMemo(
     () => [
       {
@@ -47,7 +50,7 @@ const Contact = ({
   const onPressAvatar = () => {
     console.log('onPressAvatar');
   };
-  const renderImage = () => {
+  const renderImage = useCallback(() => {
     const uri =
       typeof state === 'string' ? state : state?.path || state?.source;
     if (uri) {
@@ -69,7 +72,7 @@ const Contact = ({
         />
       );
     }
-  };
+  }, [state]);
   return (
     <View style={styles.container}>
       {renderImage()}
@@ -95,6 +98,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     paddingVertical: S24,
+    paddingHorizontal: SPACING,
   },
   pointContainer: {
     flex: 1,

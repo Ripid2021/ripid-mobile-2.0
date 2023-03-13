@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import {AUTH, SOCIAL} from '~/asset/graphics';
 import Text from '~/common/Text';
-import {S24, scaleSize} from '~/theme/size';
+import {S24, scaleSize, SPACING} from '~/theme/size';
 
 type TContactRipid = {
   icon: ImageSourcePropType;
@@ -73,6 +73,7 @@ const ItemContactRipid = ({data}: TItemContactRipid) => {
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
+    paddingHorizontal: SPACING,
   },
   label: {
     fontSize: scaleSize(18),

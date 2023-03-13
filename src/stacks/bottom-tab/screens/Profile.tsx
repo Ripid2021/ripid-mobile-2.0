@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useLayoutEffect} from 'react';
 import {
   Image,
   SafeAreaView,
@@ -10,7 +10,7 @@ import {
 import {PROFILE} from '~/asset/graphics';
 import {useAppNavigation} from '~/hooks/useAppNavigation';
 import HeaderTabBar from '~/navigation/HeaderTabBar';
-import {useGetProfile, usePostFeedback} from '~/state/profile';
+import {useGetProfile} from '~/state/profile';
 import {LIGHT_GREY} from '~/theme/color';
 import {S24, scaleSize, SPACING} from '~/theme/size';
 import BIO from '../../profile/components/BIO';
@@ -24,9 +24,11 @@ import SSOInfo from '../../profile/components/SSOInfo';
 
 const Profile = () => {
   const navigation = useAppNavigation();
-  const {data: profile} = useGetProfile({});
-  console.log({profile});
+  const {data: profile, refetch: refetchProfile} = useGetProfile({});
 
+  useLayoutEffect(() => {
+    refetchProfile();
+  }, [refetchProfile]);
   // const {mutate: postFeedBack} = usePostFeedback();
   const onPressSetting = () => {
     // navigation.navigate('SettingScreen')
@@ -36,7 +38,7 @@ const Profile = () => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.containerWrapper}>
-        <HeaderTabBar title="Lê Quang Thuận" onPress={onPressSetting}>
+        <HeaderTabBar title={profile?.fullName || ''} onPress={onPressSetting}>
           <TouchableOpacity style={styles.buttonRight1}>
             <Image source={PROFILE.NOTIFICATION} resizeMode="contain" />
           </TouchableOpacity>
@@ -47,10 +49,19 @@ const Profile = () => {
           style={styles.content}
           scrollEventThrottle={16}
           bounces>
-          <Contact admire={2} admired={2} ripid={10} avatar={tmpAvt} />
+          <Contact
+            admire={profile?.admireBy?.length || 0}
+            admired={profile?.admireBy?.length || 0}
+            ripid={profile?.totalCompletedRipid || 0}
+            avatar={profile?.avatar?.source}
+          />
           <ListHabit />
-          <BIO bio="dasdsdasd" />
-          <SSOInfo />
+          <BIO bio={profile?.description || ''} />
+          <SSOInfo
+            facebookUrl={profile?.facebookUrl}
+            instagramUrl={profile?.instagramUrl}
+            emailUrl={profile?.email}
+          />
           <View style={styles.line} />
           <ListMemberSameGroup />
           <View style={styles.line} />
@@ -72,7 +83,6 @@ const styles = StyleSheet.create({
   },
   containerWrapper: {
     flex: 1,
-    paddingHorizontal: SPACING,
     paddingBottom: SPACING,
   },
   buttonRight1: {
@@ -86,5 +96,6 @@ const styles = StyleSheet.create({
     height: scaleSize(1),
     backgroundColor: LIGHT_GREY,
     marginVertical: S24,
+    marginHorizontal: SPACING,
   },
 });

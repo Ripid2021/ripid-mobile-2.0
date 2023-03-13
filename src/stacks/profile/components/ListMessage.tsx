@@ -3,7 +3,7 @@ import React from 'react';
 import Text from '~/common/Text';
 import ContactCard from './ContactCard';
 import {BLUE, LIGHT_BLUE_1, WHITE} from '~/theme/color';
-import {S16, S24, S8, scaleSize} from '~/theme/size';
+import {S16, S24, S8, scaleSize, SPACING} from '~/theme/size';
 import {t} from 'i18next';
 import {useAppNavigation} from '~/hooks/useAppNavigation';
 
@@ -44,7 +44,7 @@ const ListMessage = () => {
     navigation.navigate('MessageGroup');
   };
   return (
-    <>
+    <View style={styles.spacing}>
       <View style={styles.labelContainer}>
         <Text style={styles.label}>{t('personalMessageBox')}</Text>
         <View style={styles.number}>
@@ -59,13 +59,16 @@ const ListMessage = () => {
       <TouchableOpacity onPress={onPressSeeAll}>
         <Text style={styles.labelSeeAll}>{t('seeAll')}</Text>
       </TouchableOpacity>
-    </>
+    </View>
   );
 };
 
 export default ListMessage;
 
 const styles = StyleSheet.create({
+  spacing: {
+    paddingHorizontal: SPACING,
+  },
   labelContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',

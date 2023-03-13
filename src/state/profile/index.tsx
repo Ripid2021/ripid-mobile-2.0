@@ -8,12 +8,12 @@ import {
 } from 'react-query';
 import BaseAxios from '~/config/base-axios';
 import {THabitSummary} from '~/state/onboarding/type';
-import {PostFeedbackDto} from '~/state/profile/type';
+import {PostFeedbackDto, TProfile} from '~/state/profile/type';
 import {TBaseError} from '~/type';
 //use it later because i don't know how
 type UseGetProfile = (
-  arg: UseQueryOptions<THabitSummary, TBaseError, THabitSummary, string[]>,
-) => UseQueryResult<THabitSummary, TBaseError>;
+  arg: UseQueryOptions<TProfile, TBaseError, THabitSummary, string[]>,
+) => UseQueryResult<TProfile, TBaseError>;
 
 export const useGetProfile: UseGetProfile = () => {
   return useQuery(['PROFILE/GET_PROFILE'], () => {

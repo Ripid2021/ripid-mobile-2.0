@@ -30,7 +30,7 @@ const BottomTabStack = () => {
   // const {data: dataInfo = []} = useGetProfile({});
   return (
     <BottomTab.Navigator
-      initialRouteName="ProfileStack"
+      initialRouteName="Profile"
       screenOptions={{
         tabBarStyle: styles.barItemContainer,
       }}>

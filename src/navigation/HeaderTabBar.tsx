@@ -34,11 +34,13 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     flexDirection: 'row',
     alignItems: 'center',
+    paddingHorizontal: SPACING,
   },
   title: {
     fontSize: scaleSize(24),
     color: BLACK,
     fontWeight: '700',
+    flex: 1,
   },
   rightComponent: {
     flexDirection: 'row',

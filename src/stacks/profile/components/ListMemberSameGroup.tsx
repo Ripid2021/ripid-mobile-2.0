@@ -9,7 +9,7 @@ import {
 import Text from '~/common/Text';
 import {useAppNavigation} from '~/hooks/useAppNavigation';
 import {BLUE, LIGHT_BLUE_1, WHITE} from '~/theme/color';
-import {S16, S24, S8, scaleSize} from '~/theme/size';
+import {S16, S24, S8, scaleSize, SPACING} from '~/theme/size';
 import ContactCard from './ContactCard';
 
 export type TContactCardItemProps = {
@@ -57,7 +57,7 @@ const ListMemberSameGroup = () => {
     navigation.navigate('MemberSameGroup');
   };
   return (
-    <>
+    <View style={styles.spacing}>
       <View style={styles.labelContainer}>
         <Text style={styles.label}>{t('memberSameGroup')}</Text>
         <View style={styles.number}>
@@ -72,13 +72,16 @@ const ListMemberSameGroup = () => {
       <TouchableOpacity onPress={onPressSeeAll}>
         <Text style={styles.labelSeeAll}>{t('seeAll')}</Text>
       </TouchableOpacity>
-    </>
+    </View>
   );
 };
 
 export default ListMemberSameGroup;
 
 const styles = StyleSheet.create({
+  spacing: {
+    paddingHorizontal: SPACING,
+  },
   labelContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
