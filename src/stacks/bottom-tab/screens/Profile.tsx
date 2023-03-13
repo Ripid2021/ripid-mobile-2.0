@@ -24,7 +24,9 @@ import SSOInfo from '../../profile/components/SSOInfo';
 
 const Profile = () => {
   const navigation = useAppNavigation();
-  // const {data: profile} = useGetProfile({});
+  const {data: profile} = useGetProfile({});
+  console.log({profile});
+
   // const {mutate: postFeedBack} = usePostFeedback();
   const onPressSetting = () => {
     // navigation.navigate('SettingScreen')

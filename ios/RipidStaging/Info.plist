@@ -24,6 +24,30 @@
 	<string>13</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>ripid</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>ripid</string>
+				<string>com.googleusercontent.apps.1070962359511-8thmrjt5upbg5iosjl0ds5ckusfp8cn2</string>
+				<string>fb1475724296207117</string>
+			</array>
+		</dict>
+	</array>
+
+	<key>FacebookAppID</key>
+	<string>1475724296207117</string>
+	<key>FacebookClientToken</key>
+	<string>9e41fe78d52c27f0fadfc407255165c2</string>
+	<key>FacebookDisplayName</key>
+	<string>$(PRODUCT_NAME)</string>
+
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSExceptionDomains</key>

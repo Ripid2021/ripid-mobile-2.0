@@ -31,6 +31,7 @@
 		8428439E29A9D7E600043F38 /* FontAwesome5_Brands.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8428438E29A9D7E500043F38 /* FontAwesome5_Brands.ttf */; };
 		8428439F29A9D7E600043F38 /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8428438F29A9D7E500043F38 /* Foundation.ttf */; };
 		842843A029A9D7E600043F38 /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8428439029A9D7E500043F38 /* MaterialIcons.ttf */; };
+		84584E0429BE127B00197DCA /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84584E0329BE127B00197DCA /* File.swift */; };
 		8460492E2998D38D00FC1333 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8460492D2998D38D00FC1333 /* LaunchScreen.storyboard */; };
 		8A9E9FDABB604D3890AC937A /* Inter-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5EA634D1467645688393E4D5 /* Inter-SemiBold.ttf */; };
 		8E1AD89631A742DFB4AF68B4 /* Inter-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 99A2815DBABB43CB8E67A9C7 /* Inter-Medium.ttf */; };
@@ -84,6 +85,10 @@
 		8428438E29A9D7E500043F38 /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome5_Brands.ttf; path = "../../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf"; sourceTree = "<group>"; };
 		8428438F29A9D7E500043F38 /* Foundation.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Foundation.ttf; path = "../../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
 		8428439029A9D7E500043F38 /* MaterialIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = MaterialIcons.ttf; path = "../../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
+		84584E0129BE112700197DCA /* RipidStagingRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = RipidStagingRelease.entitlements; path = RipidStaging/RipidStagingRelease.entitlements; sourceTree = "<group>"; };
+		84584E0229BE127A00197DCA /* RipidStaging-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RipidStaging-Bridging-Header.h"; sourceTree = "<group>"; };
+		84584E0329BE127B00197DCA /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		84584E0529BE1FD800197DCA /* RipidStagingDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = RipidStagingDebug.entitlements; path = RipidStaging/RipidStagingDebug.entitlements; sourceTree = "<group>"; };
 		8460492D2998D38D00FC1333 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		85B5F3E76B944768A0D5BC31 /* Inter-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-Light.ttf"; path = "../src/asset/fonts/Inter-Light.ttf"; sourceTree = "<group>"; };
 		95278964207DC2C29D1D7C12 /* libPods-RipidStaging-RipidStagingTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RipidStaging-RipidStagingTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -136,6 +141,8 @@
 		13B07FAE1A68108700A75B9A /* RipidStaging */ = {
 			isa = PBXGroup;
 			children = (
+				84584E0529BE1FD800197DCA /* RipidStagingDebug.entitlements */,
+				84584E0129BE112700197DCA /* RipidStagingRelease.entitlements */,
 				8428438029A9D75B00043F38 /* Fonts */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
@@ -167,6 +174,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				84584E0329BE127B00197DCA /* File.swift */,
 				13B07FAE1A68108700A75B9A /* RipidStaging */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* RipidStagingTests */,
@@ -174,6 +182,7 @@
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
 				F923E2FAE7864678898EDA6B /* Resources */,
+				84584E0229BE127A00197DCA /* RipidStaging-Bridging-Header.h */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -298,7 +307,7 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						LastSwiftMigration = 1120;
+						LastSwiftMigration = 1410;
 					};
 				};
 			};
@@ -529,6 +538,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
+				84584E0429BE127B00197DCA /* File.swift in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -548,6 +558,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3CD0D6F991F383A3FD9B1F34 /* Pods-RipidStaging-RipidStagingTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
@@ -580,6 +591,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C69BDB967BB1B1B3F6E81283 /* Pods-RipidStaging-RipidStagingTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
@@ -611,6 +623,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = RipidStaging/RipidStagingDebug.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 7;
@@ -632,6 +645,7 @@
 				PRODUCT_NAME = RipidStaging;
 				PROVISIONING_PROFILE = "4101b441-ada4-40ea-a0aa-6c1394d21351";
 				PROVISIONING_PROFILE_SPECIFIER = "Ripid Staging Profile";
+				SWIFT_OBJC_BRIDGING_HEADER = "RipidStaging-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -644,6 +658,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = RipidStaging/RipidStagingRelease.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
@@ -667,6 +682,7 @@
 				PROVISIONING_PROFILE = "4101b441-ada4-40ea-a0aa-6c1394d21351";
 				PROVISIONING_PROFILE_SPECIFIER = "Ripid Staging Profile";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "Ripid Staging Profile";
+				SWIFT_OBJC_BRIDGING_HEADER = "RipidStaging-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
